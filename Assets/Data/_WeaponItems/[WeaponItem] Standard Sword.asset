@@ -22,16 +22,20 @@ MonoBehaviour:
   rightHandIdle01: Right_Arm_Idle_01
   leftHandIdle01: Left_Arm_Idle_01
   twoHandIdle: TH_Idle_Sword_01
-  ohLightAttack01: OH_LightAttack_01
-  ohLightAttack02: OH_LightAttack_02
-  ohHeavyAttack01: OH_HeavyAttack_01
-  ohHeavyAttack02: OH_HeavyAttack_02
+  ohLightAttack01: '[Attack] SwordCombo_1 01'
+  ohLightAttack02: '[Attack] SwordCombo_1 02'
+  ohLightAttack03: '[Attack] SwordCombo_1 03'
+  ohLightAttack04: '[Attack] SwordCombo_1 04'
+  ohHeavyAttack01: '[Attack] SwordCombo_2 01'
+  ohHeavyAttack02: '[Attack] SwordCombo_2 02'
+  ohHeavyAttack03: '[Attack] SwordCombo_2 03'
+  ohHeavyAttack04: '-'
   thLightAttack01: TH_LightAttack_01
   thLightAttack02: TH_LightAttack_02
   thHeavyAttack01: TH_HeavyAttack_01
   thHeavyAttack02: TH_HeavyAttack_02
   weaponArt: 
-  baseStaminaCost: 20
+  baseStaminaCost: 10
   lightAttackMultiplier: 1
   heavyAttackMultiplier: 2
   isMeleeWeapon: 1

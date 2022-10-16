@@ -1,3 +1,4 @@
+using System;
 using _Scripts._Items;
 using UnityEngine;
 
@@ -76,28 +77,68 @@ namespace _Scripts._Player {
             if ( inputHandler.comboFlag )
             {
                 playerAnimatorManager.animator.SetBool("CanDoCombo", false);
-                if ( lastAttack == weapon.ohLightAttack01 )
-                {
-                    playerAnimatorManager.PlayTargetAnimation(weapon.ohLightAttack02, true);
-                    lastAttack = weapon.ohLightAttack02;
-                }
-                else if ( lastAttack == weapon.thLightAttack01 )
+
+                HandleOneHandedAttackCombos(weapon);
+
+                if ( lastAttack == weapon.thLightAttack01 )
                 {
                     playerAnimatorManager.PlayTargetAnimation(weapon.thLightAttack02, true);
                     lastAttack = weapon.thLightAttack02;
                 }
-
-                if ( lastAttack == weapon.ohHeavyAttack01 )
+                else if ( lastAttack == weapon.thLightAttack02 )
                 {
-                    playerAnimatorManager.PlayTargetAnimation(weapon.ohHeavyAttack02, true);
-                    lastAttack = weapon.ohHeavyAttack02;
+                    playerAnimatorManager.PlayTargetAnimation(weapon.thLightAttack02, true);
+                    //todo: lastAttack = weapon.thLightAttack03;
                 }
-                else if ( lastAttack == weapon.thHeavyAttack01 )
+
+                if ( lastAttack == weapon.thHeavyAttack01 )
                 {
                     playerAnimatorManager.PlayTargetAnimation(weapon.thHeavyAttack02, true);
                     lastAttack = weapon.thHeavyAttack02;
                 }
+                else if ( lastAttack == weapon.thHeavyAttack01 )
+                {
+                    playerAnimatorManager.PlayTargetAnimation(weapon.thHeavyAttack02, true);
+                    //todo: lastAttack = weapon.thHeavyAttack03;
+                }
             }
+        }
+
+        private void HandleOneHandedAttackCombos(WeaponItem weapon)
+        {
+            if ( lastAttack == weapon.ohLightAttack01 )
+            {
+                playerAnimatorManager.PlayTargetAnimation(weapon.ohLightAttack02, true);
+                lastAttack = weapon.ohLightAttack02;
+            }
+            else if ( lastAttack == weapon.ohLightAttack02 )
+            {
+                playerAnimatorManager.PlayTargetAnimation(weapon.ohLightAttack03, true);
+                lastAttack = weapon.ohLightAttack03;
+            }
+            else if ( lastAttack == weapon.ohLightAttack03 )
+            {
+                playerAnimatorManager.PlayTargetAnimation(weapon.ohLightAttack04, true);
+                lastAttack = weapon.ohLightAttack04;
+            }
+
+
+            if ( lastAttack == weapon.ohHeavyAttack01 )
+            {
+                playerAnimatorManager.PlayTargetAnimation(weapon.ohHeavyAttack02, true);
+                lastAttack = weapon.ohHeavyAttack02;
+            }
+            else if ( lastAttack == weapon.ohHeavyAttack02 )
+            {
+                playerAnimatorManager.PlayTargetAnimation(weapon.ohHeavyAttack03, true);
+                lastAttack = weapon.ohHeavyAttack03;
+            }
+            else if ( lastAttack == weapon.ohHeavyAttack03 )
+            {
+                playerAnimatorManager.PlayTargetAnimation(weapon.ohHeavyAttack04, true);
+                lastAttack = weapon.ohHeavyAttack04;
+            }
+
         }
 
         public void HandleLightAttackActionInput()

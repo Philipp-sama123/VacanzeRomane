@@ -257,7 +257,7 @@ namespace _Scripts._Player {
                     if ( inAirTimer > 0.5f )
                     {
                         Debug.Log("[Info] You were in the air for " + inAirTimer);
-                        playerAnimatorManager.PlayTargetAnimation("Landing", true);
+                        playerAnimatorManager.PlayTargetAnimation("[Airborne] Landing", true);
                         inAirTimer = 0;
                     }
                     else
@@ -280,7 +280,7 @@ namespace _Scripts._Player {
                 {
                     if ( playerManager.isInteracting == false )
                     {
-                        playerAnimatorManager.PlayTargetAnimation("Falling", true);
+                        playerAnimatorManager.PlayTargetAnimation("[Airborne] Falling", true);
                     }
 
                     Vector3 vel = rigidbody.velocity;
@@ -313,7 +313,8 @@ namespace _Scripts._Player {
                 {
                     moveDirection = cameraObject.forward * inputHandler.vertical;
                     moveDirection += cameraObject.right * inputHandler.horizontal;
-                    playerAnimatorManager.PlayTargetAnimation("Running Jump", true);
+                    playerAnimatorManager.PlayTargetAnimation("[Airborne] Running Jump", true);
+                    //Todo: think of this playerAnimatorManager.PlayTargetAnimation("[Airborne] Standing Jump", false, true);
                     moveDirection.y = 0; // so just rootMotion handles the shit
                     // maybe addforce
 
@@ -323,7 +324,7 @@ namespace _Scripts._Player {
                 else
                 {
                     // Todo: maye add some force
-                    playerAnimatorManager.PlayTargetAnimation("Standing Jump", false);
+                    playerAnimatorManager.PlayTargetAnimation("[Airborne] Standing Jump", false,true);
                 }
             }
         }

@@ -20,8 +20,13 @@ namespace _Scripts._Items {
         [Header("One Handed Attack Animations")]
         public string ohLightAttack01;
         public string ohLightAttack02;
+        public string ohLightAttack03;
+        public string ohLightAttack04;
+        
         public string ohHeavyAttack01;
         public string ohHeavyAttack02;
+        public string ohHeavyAttack03;
+        public string ohHeavyAttack04;
 
         [Header("Two Handed Attack Animations")]
         public string thLightAttack01;
