@@ -157,7 +157,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7834146547316946882}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: -0.00000032782552}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 3.75, y: 0.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -246,7 +246,7 @@ MonoBehaviour:
   radius: 0.5
   interactableText: Open Chest
   itemSpawner: {fileID: 7604661283901414710, guid: 4b29b45ccaa9c41199cd88cf55f3ddde, type: 3}
-  itemInChest: {fileID: 11400000, guid: 84fab09dae883490b80bda5089131976, type: 2}
+  itemInChest: {fileID: 11400000, guid: 1b0a0d4e042df4d369d85b6d8b5f7e40, type: 2}
   playerRotationSpeed: 300
   playerStandingPosition: {fileID: 4064342143862487201}
 --- !u!95 &7834146547314759983

@@ -61,7 +61,7 @@ namespace _Scripts._Player {
             playerManager = FindObjectOfType<PlayerManager>();
 
             // Camera is to fast without it
-            Application.targetFrameRate = 60;
+            // Application.targetFrameRate = 60;
         }
 
         private void Start()
@@ -78,12 +78,12 @@ namespace _Scripts._Player {
             HandleCameraCollisions(deltaTime);
         }
 
-        public void HandleCameraRotation(float delta, float mouseXInput, float mouseYInput)
+        public void HandleCameraRotation(float deltaTime, float mouseXInput, float mouseYInput)
         {
             if ( inputHandler.lockOnFlag == false && currentLockOnTarget == null )
             {
-                lookAngle += (mouseXInput * lookSpeed) / delta;
-                pivotAngle -= (mouseYInput * pivotSpeed) / delta;
+                lookAngle += (mouseXInput * lookSpeed) ;
+                pivotAngle -= (mouseYInput * pivotSpeed);
                 pivotAngle = Mathf.Clamp(pivotAngle, minimumPivot, maximumPivot);
 
                 Vector3 rotation = Vector3.zero;

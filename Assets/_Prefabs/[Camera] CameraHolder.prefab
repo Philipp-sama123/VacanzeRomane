@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6872253026748041203}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: CameraPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,8 +42,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6872253027459001018}
   - component: {fileID: 6872253027459001019}
-  m_Layer: 10
-  m_Name: CameraHolder
+  m_Layer: 0
+  m_Name: '[Camera] CameraHolder'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -88,9 +88,9 @@ MonoBehaviour:
   environmentLayer:
     serializedVersion: 2
     m_Bits: 257
-  lookSpeed: 0.05
+  lookSpeed: 2
   followSpeed: 0.1
-  pivotSpeed: 0.03
+  pivotSpeed: 1.5
   minimumPivot: -45
   maximumPivot: 45
   cameraSphereRadius: 0.2
