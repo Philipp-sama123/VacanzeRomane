@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Enemy Attack 02
   m_EditorClassIdentifier: 
   actionAnimation: OH_LightAttack_02
-  canCombo: 0
+  canCombo: 1
   comboAction: {fileID: 11400000, guid: dade3863cfc2049a99c49f87f990eed7, type: 2}
   attackScore: 3
   recoveryTime: 2
