@@ -69,20 +69,20 @@ namespace _Scripts._Player {
             environmentLayer = LayerMask.NameToLayer("Environment");
         }
 
-        public void FollowTarget(float deltaTime)
+        public void FollowTarget()
         {
             Vector3 targetPositionTemp = Vector3.SmoothDamp(myTransform.position, targetTransform.position,
-                ref cameraFollowVelocity, deltaTime / followSpeed);
+                ref cameraFollowVelocity, followSpeed);
             myTransform.position = targetPositionTemp;
 
-            HandleCameraCollisions(deltaTime);
+            HandleCameraCollisions();
         }
 
-        public void HandleCameraRotation(float deltaTime, float mouseXInput, float mouseYInput)
+        public void HandleCameraRotation(float mouseXInput, float mouseYInput)
         {
             if ( inputHandler.lockOnFlag == false && currentLockOnTarget == null )
             {
-                lookAngle += (mouseXInput * lookSpeed) ;
+                lookAngle += (mouseXInput * lookSpeed);
                 pivotAngle -= (mouseYInput * pivotSpeed);
                 pivotAngle = Mathf.Clamp(pivotAngle, minimumPivot, maximumPivot);
 
@@ -117,7 +117,7 @@ namespace _Scripts._Player {
             }
         }
 
-        private void HandleCameraCollisions(float delta)
+        private void HandleCameraCollisions()
         {
             targetPosition = defaultPosition;
             RaycastHit hit;
@@ -137,7 +137,7 @@ namespace _Scripts._Player {
                 targetPosition = -minimumCollisionOffset;
             }
 
-            cameraTransformPosition.z = Mathf.Lerp(cameraTransform.localPosition.z, targetPosition, delta / 0.2f);
+            cameraTransformPosition.z = Mathf.Lerp(cameraTransform.localPosition.z, targetPosition, 0.2f);
             cameraTransform.localPosition = cameraTransformPosition;
         }
 

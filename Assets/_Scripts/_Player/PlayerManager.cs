@@ -64,7 +64,7 @@ namespace _Scripts._Player {
             #region RootMotion Movement
 
             // those are playing a Root Motion Animation so it NEEDS to be in Update to not be out of sync
-            playerLocomotion.HandleRollingAndSprinting(deltaTime);
+            playerLocomotion.HandleRollingAndSprinting();
             playerLocomotion.HandleJumping(); // playerLocomotion.HandleJumping();
 
             #endregion
@@ -100,12 +100,11 @@ namespace _Scripts._Player {
             inputHandler.aInput = false;
             inputHandler.inventoryInput = false;
 
-
-            float deltaTime = Time.deltaTime;
             if ( cameraHandler != null )
             {
-                cameraHandler.FollowTarget(deltaTime);
-                cameraHandler.HandleCameraRotation(deltaTime, inputHandler.mouseX, inputHandler.mouseY);
+                // Frame Rate independent, so deltaTime is not required
+                cameraHandler.FollowTarget();
+                cameraHandler.HandleCameraRotation(inputHandler.mouseX, inputHandler.mouseY);
             }
             else
             {

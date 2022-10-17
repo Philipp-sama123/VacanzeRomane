@@ -181,7 +181,7 @@ namespace _Scripts._Player {
             }
         }
 
-        public void HandleRollingAndSprinting(float deltaTime)
+        public void HandleRollingAndSprinting()
         {
             if ( playerManager.isInteracting )
             {
@@ -290,12 +290,17 @@ namespace _Scripts._Player {
                 }
             }
 
+            // ToDo: put in update ! because it makes the character jittery in fixed update -> Transform manipulation vs Rigidbody
+            // maybe calculate velocity required to put the player up
+
             if ( playerManager.isInteracting || inputHandler.moveAmount > 0 )
             {
-                myTransform.position = Vector3.Lerp(myTransform.position, targetPosition, Time.deltaTime / 0.1f);
+                // rigidbody.MovePosition(targetPosition);
+                myTransform.position = Vector3.Lerp(myTransform.position, targetPosition, deltaTime / 0.1f);
             }
             else
             {
+                // rigidbody.MovePosition(targetPosition);
                 myTransform.position = targetPosition;
             }
 
@@ -324,7 +329,7 @@ namespace _Scripts._Player {
                 else
                 {
                     // Todo: maye add some force
-                    playerAnimatorManager.PlayTargetAnimation("[Airborne] Standing Jump", false,true);
+                    playerAnimatorManager.PlayTargetAnimation("[Airborne] Standing Jump", false, true);
                 }
             }
         }
