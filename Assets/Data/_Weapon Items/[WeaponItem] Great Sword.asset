@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75792f40263a4f109cba9535258a3368, type: 3}
+  m_Name: '[WeaponItem] Great Sword'
+  m_EditorClassIdentifier: 
+  itemIcon: {fileID: 21300000, guid: a73d2bbc47d271e4b9de39d250aa3e93, type: 3}
+  itemName: Great Sword
+  modelPrefab: {fileID: 1706719210492477003, guid: 351741360c2004d8e83681548232edc2, type: 3}
+  isUnarmed: 0
+  baseDamage: 25
+  criticalDamageMultiplier: 5
+  physicalDamageAbsorption: 10
+  rightHandIdle01: Right_Arm_Idle_01
+  leftHandIdle01: Left_Arm_Idle_01
+  twoHandIdle: TH_Idle_Sword_01
+  ohLightAttack01: '[Attack] SwordCombo_1 01'
+  ohLightAttack02: '[Attack] SwordCombo_1 02'
+  ohLightAttack03: '[Attack] SwordCombo_1 03'
+  ohLightAttack04: '[Attack] SwordCombo_1 04'
+  ohHeavyAttack01: '[Attack] SwordCombo_2 01'
+  ohHeavyAttack02: '[Attack] SwordCombo_2 02'
+  ohHeavyAttack03: '[Attack] SwordCombo_2 03'
+  ohHeavyAttack04: '-'
+  thLightAttack01: TH_LightAttack_01
+  thLightAttack02: TH_LightAttack_02
+  thHeavyAttack01: TH_HeavyAttack_01
+  thHeavyAttack02: TH_HeavyAttack_02
+  weaponArt: 
+  baseStaminaCost: 10
+  lightAttackMultiplier: 1
+  heavyAttackMultiplier: 2
+  isMeleeWeapon: 1
+  isShieldWeapon: 0
+  isSpellCaster: 0
+  isFaithCaster: 0
+  isPyroCaster: 0
