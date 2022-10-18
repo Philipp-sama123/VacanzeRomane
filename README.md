@@ -1,6 +1,6 @@
 # Maledetti Carabinieri 
 
-## _Drive the latest Cars and fight your way to your Driving License_
+## _Fight your way to your Driving License_
 _This should become a funny Third Person Close Combat Game, with a Car Controller_
 _Currently the focus is on the Third Person Controller_ 
 
