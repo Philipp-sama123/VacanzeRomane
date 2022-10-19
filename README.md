@@ -4,14 +4,13 @@
 _This should become a funny Third Person Close Combat Game, with a Car Controller_
 _Currently the focus is on the Third Person Controller_ 
 
+> The Main Goal of the Game is to be funny/entertaining
+> additionally it should provide a learning source on how to do a Third Person Controller as well a Car Controller from Scratch
+
 ## MainFeatures [Goal] Third Person Controller
 
 - Smooth Combat System
-- Simple Easy Driving System
 - Authentic Style
-
-> The Main Goal of the Game is to be funny/entertaining
-> additionally it should provide a learning source on how to do a Third Person Controller as well a Car Controller from Scratch
 - Unique Style 
 - Funny
 - own written camera
