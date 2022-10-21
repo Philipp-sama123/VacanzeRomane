@@ -93,6 +93,8 @@ namespace _Scripts._Player {
 
                 inputActions.PlayerActions.LB.performed += i => lbInput = true;
                 inputActions.PlayerActions.LB.canceled += i => lbInput = false;
+                
+                // ToDo: find another input (currently tap on light attack) 
                 inputActions.PlayerActions.CriticalAttack.performed += i => criticalAttackInput = true;
 
                 inputActions.PlayerActions.Inventory.performed += i => inventoryInput = true;
@@ -179,12 +181,12 @@ namespace _Scripts._Player {
         {
             if ( rbInput )
             {
-                playerAttacker.HandleLightAttackActionInput();
+                playerAttacker.HandleRbInput();
                 // TODO: second hand vs
             }
             if ( lbInput )
             {
-                playerAttacker.HandleLBAction();
+                playerAttacker.HandleLbAction();
             }
             else
             {
@@ -208,7 +210,7 @@ namespace _Scripts._Player {
                 {
                     if ( playerManager.isInteracting || playerManager.canDoCombo ) return;
                     playerAnimatorManager.animator.SetBool("IsUsingRightHand", true); // Todo: think of removing it here - but where (?) -oo-> Animator handler + appropriate fct. 
-                    playerAttacker.HandleHeavyAttack(playerInventory.rightWeapon);
+                    playerAttacker.HandleRtInput(playerInventory.rightWeapon);
                 }
             }
 
@@ -221,7 +223,7 @@ namespace _Scripts._Player {
                 }
                 else
                 {
-                    playerAttacker.HandleLTAction();
+                    playerAttacker.HandleLtAction();
                 }
                 // if shield --> Handle weapon art
                 // else if melee --> Handle secondary Attack

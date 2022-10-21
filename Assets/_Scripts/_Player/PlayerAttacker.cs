@@ -34,114 +34,8 @@ namespace _Scripts._Player {
             else Debug.LogWarning("[Action Required] No main Camera in Scene!");
         }
 
-        private void HandleLightAttack(WeaponItem weapon)
-        {
-            if ( playerStats.currentStamina <= 0 ) return;
 
-            weaponSlotManager.attackingWeapon = weapon;
-
-            if ( inputHandler.twoHandFlag )
-            {
-                playerAnimatorManager.PlayTargetAnimation(weapon.thLightAttack01, true);
-                lastAttack = weapon.thLightAttack01;
-            }
-            else
-            {
-                playerAnimatorManager.PlayTargetAnimation(weapon.ohLightAttack01, true);
-                lastAttack = weapon.ohLightAttack01;
-            }
-        }
-
-        public void HandleHeavyAttack(WeaponItem weapon)
-        {
-            if ( playerStats.currentStamina <= 0 ) return;
-
-            weaponSlotManager.attackingWeapon = weapon;
-
-            if ( inputHandler.twoHandFlag )
-            {
-                playerAnimatorManager.PlayTargetAnimation(weapon.thHeavyAttack01, true);
-                lastAttack = weapon.thHeavyAttack01;
-            }
-            else
-            {
-                playerAnimatorManager.PlayTargetAnimation(weapon.ohHeavyAttack01, true);
-                lastAttack = weapon.ohHeavyAttack01;
-            }
-        }
-
-        public void HandleWeaponCombo(WeaponItem weapon)
-        {
-            if ( playerStats.currentStamina <= 0 ) return;
-
-            if ( inputHandler.comboFlag )
-            {
-                playerAnimatorManager.animator.SetBool("CanDoCombo", false);
-
-                HandleOneHandedAttackCombos(weapon);
-
-                if ( lastAttack == weapon.thLightAttack01 )
-                {
-                    playerAnimatorManager.PlayTargetAnimation(weapon.thLightAttack02, true);
-                    lastAttack = weapon.thLightAttack02;
-                }
-                else if ( lastAttack == weapon.thLightAttack02 )
-                {
-                    playerAnimatorManager.PlayTargetAnimation(weapon.thLightAttack02, true);
-                    //todo: lastAttack = weapon.thLightAttack03;
-                }
-
-                if ( lastAttack == weapon.thHeavyAttack01 )
-                {
-                    playerAnimatorManager.PlayTargetAnimation(weapon.thHeavyAttack02, true);
-                    lastAttack = weapon.thHeavyAttack02;
-                }
-                else if ( lastAttack == weapon.thHeavyAttack01 )
-                {
-                    playerAnimatorManager.PlayTargetAnimation(weapon.thHeavyAttack02, true);
-                    //todo: lastAttack = weapon.thHeavyAttack03;
-                }
-            }
-        }
-
-        private void HandleOneHandedAttackCombos(WeaponItem weapon)
-        {
-            if ( lastAttack == weapon.ohLightAttack01 )
-            {
-                playerAnimatorManager.PlayTargetAnimation(weapon.ohLightAttack02, true);
-                lastAttack = weapon.ohLightAttack02;
-            }
-            else if ( lastAttack == weapon.ohLightAttack02 )
-            {
-                playerAnimatorManager.PlayTargetAnimation(weapon.ohLightAttack03, true);
-                lastAttack = weapon.ohLightAttack03;
-            }
-            else if ( lastAttack == weapon.ohLightAttack03 )
-            {
-                playerAnimatorManager.PlayTargetAnimation(weapon.ohLightAttack04, true);
-                lastAttack = weapon.ohLightAttack04;
-            }
-
-
-            if ( lastAttack == weapon.ohHeavyAttack01 )
-            {
-                playerAnimatorManager.PlayTargetAnimation(weapon.ohHeavyAttack02, true);
-                lastAttack = weapon.ohHeavyAttack02;
-            }
-            else if ( lastAttack == weapon.ohHeavyAttack02 )
-            {
-                playerAnimatorManager.PlayTargetAnimation(weapon.ohHeavyAttack03, true);
-                lastAttack = weapon.ohHeavyAttack03;
-            }
-            else if ( lastAttack == weapon.ohHeavyAttack03 )
-            {
-                playerAnimatorManager.PlayTargetAnimation(weapon.ohHeavyAttack04, true);
-                lastAttack = weapon.ohHeavyAttack04;
-            }
-
-        }
-
-        public void HandleLightAttackActionInput()
+        public void HandleRbInput()
         {
             if ( playerInventory.rightWeapon.isMeleeWeapon )
             {
@@ -162,6 +56,52 @@ namespace _Scripts._Player {
                 Debug.LogWarning("[Action Required] Please assign a WeaponType for your current weapon in the inspector");
             }
 
+        }
+
+        public void HandleRtInput(WeaponItem weapon)
+        {
+            if ( playerStats.currentStamina <= 0 ) return;
+
+            weaponSlotManager.attackingWeapon = weapon;
+
+            if ( inputHandler.twoHandFlag )
+            {
+                playerAnimatorManager.PlayTargetAnimation(weapon.thHeavyAttack01, true, true);
+                lastAttack = weapon.thHeavyAttack01;
+            }
+            else if ( playerInventory.rightWeapon.isMeleeWeapon || playerInventory.rightWeapon.isUnarmed )
+            {
+                playerAnimatorManager.PlayTargetAnimation(weapon.ohHeavyAttack01, true, true);
+                lastAttack = weapon.ohHeavyAttack01;
+            }
+            else if (
+                playerInventory.rightWeapon.isSpellCaster
+                || playerInventory.rightWeapon.isFaithCaster
+                || playerInventory.rightWeapon.isPyroCaster
+            )
+            {
+                // Handle Magic Spell casting
+                // TODO: Handle Heavy Magic Input
+                PerformRbMagicAction(playerInventory.rightWeapon);
+            }
+        }
+
+        private void PerformLightAttackMeleeAction()
+        {
+            if ( playerManager.canDoCombo )
+            {
+                inputHandler.comboFlag = true;
+                playerAnimatorManager.animator.SetBool("IsUsingRightHand", true); // Todo: think of removing it here - but where (?) -oo-> Animator handler + appropriate fct. 
+                HandleWeaponCombo(playerInventory.rightWeapon);
+                inputHandler.comboFlag = false;
+            }
+            else
+            {
+                if ( playerManager.isInteracting || playerManager.canDoCombo ) return;
+
+                playerAnimatorManager.animator.SetBool("IsUsingRightHand", true); // Todo: think of removing it here - but where (?) -oo-> Animator handler + appropriate fct. 
+                HandleLightAttack(playerInventory.rightWeapon);
+            }
         }
 
         private void PerformRbMagicAction(WeaponItem weapon)
@@ -201,14 +141,101 @@ namespace _Scripts._Player {
             }
         }
 
-        public void HandleLBAction()
+        public void HandleWeaponCombo(WeaponItem weapon)
+        {
+            if ( playerStats.currentStamina <= 0 ) return;
+
+            if ( inputHandler.comboFlag )
+            {
+                playerAnimatorManager.animator.SetBool("CanDoCombo", false);
+
+                HandleOneHandedAttackCombos(weapon);
+
+                if ( lastAttack == weapon.thLightAttack01 )
+                {
+                    playerAnimatorManager.PlayTargetAnimation(weapon.thLightAttack02, true, true);
+                    lastAttack = weapon.thLightAttack02;
+                }
+                else if ( lastAttack == weapon.thLightAttack02 )
+                {
+                    playerAnimatorManager.PlayTargetAnimation(weapon.thLightAttack02, true, true);
+                    //todo: lastAttack = weapon.thLightAttack03;
+                }
+
+                if ( lastAttack == weapon.thHeavyAttack01 )
+                {
+                    playerAnimatorManager.PlayTargetAnimation(weapon.thHeavyAttack02, true, true);
+                    lastAttack = weapon.thHeavyAttack02;
+                }
+                else if ( lastAttack == weapon.thHeavyAttack01 )
+                {
+                    playerAnimatorManager.PlayTargetAnimation(weapon.thHeavyAttack02, true, true);
+                    //ToDo: lastAttack = weapon.thHeavyAttack03;
+                }
+            }
+        }
+
+        private void HandleOneHandedAttackCombos(WeaponItem weapon)
+        {
+            if ( lastAttack == weapon.ohLightAttack01 )
+            {
+                playerAnimatorManager.PlayTargetAnimation(weapon.ohLightAttack02, true, true);
+                lastAttack = weapon.ohLightAttack02;
+            }
+            else if ( lastAttack == weapon.ohLightAttack02 )
+            {
+                playerAnimatorManager.PlayTargetAnimation(weapon.ohLightAttack03, true, true);
+                lastAttack = weapon.ohLightAttack03;
+            }
+            else if ( lastAttack == weapon.ohLightAttack03 )
+            {
+                playerAnimatorManager.PlayTargetAnimation(weapon.ohLightAttack04, true, true);
+                lastAttack = weapon.ohLightAttack04;
+            }
+
+
+            if ( lastAttack == weapon.ohHeavyAttack01 )
+            {
+                playerAnimatorManager.PlayTargetAnimation(weapon.ohHeavyAttack02, true, true);
+                lastAttack = weapon.ohHeavyAttack02;
+            }
+            else if ( lastAttack == weapon.ohHeavyAttack02 )
+            {
+                playerAnimatorManager.PlayTargetAnimation(weapon.ohHeavyAttack03, true, true);
+                lastAttack = weapon.ohHeavyAttack03;
+            }
+            else if ( lastAttack == weapon.ohHeavyAttack03 )
+            {
+                playerAnimatorManager.PlayTargetAnimation(weapon.ohHeavyAttack04, true, true);
+                lastAttack = weapon.ohHeavyAttack04;
+            }
+
+        }
+
+        private void HandleLightAttack(WeaponItem weapon)
+        {
+            if ( playerStats.currentStamina <= 0 ) return;
+
+            weaponSlotManager.attackingWeapon = weapon;
+
+            if ( inputHandler.twoHandFlag )
+            {
+                playerAnimatorManager.PlayTargetAnimation(weapon.thLightAttack01, true, true);
+                lastAttack = weapon.thLightAttack01;
+            }
+            else
+            {
+                playerAnimatorManager.PlayTargetAnimation(weapon.ohLightAttack01, true, true);
+                lastAttack = weapon.ohLightAttack01;
+            }
+        }
+
+        public void HandleLbAction()
         {
             PerformBlockingAction();
         }
 
-
-
-        public void HandleLTAction()
+        public void HandleLtAction()
         {
             if ( playerInventory.leftWeapon.isShieldWeapon )
             {
@@ -236,7 +263,7 @@ namespace _Scripts._Player {
 
         public void AttemptBackStabOrRiposte()
         {
-            if ( playerStats.currentStamina <= 0 ) return; // Todo: challenge this 
+            if ( playerStats.currentStamina <= 0 ) return; // ToDo: challenge this 
 
             RaycastHit hit;
 
@@ -255,7 +282,7 @@ namespace _Scripts._Player {
                         playerManager.transform.position,
                         enemyCharacterManager.backStabCollider.criticalDamageStandPosition.position,
                         Time.deltaTime / 0.1f
-                    ); //OR: playerManager.transform.position = enemyCharacterManager.backStabCollider.backStabberStandPoint.position; 
+                    ); // ToDo: whats better ... OR: playerManager.transform.position = enemyCharacterManager.backStabCollider.backStabberStandPoint.position; 
 
                     Vector3 rotationDirection = playerManager.transform.root.eulerAngles;
                     rotationDirection = hit.transform.position - playerManager.transform.position;
@@ -309,34 +336,9 @@ namespace _Scripts._Player {
                 }
                 else
                 {
-                    Debug.Log("[Info] Cannot Riposte!");
+                 // ToDo: when new riposting input -- Animation for no riposte possible
                 }
 
-            }
-        }
-
-        private void SuccessfullyCastSpell() // called on Animator Event
-        {
-            playerInventory.currentSpell.SuccessfullyCastSpell(playerAnimatorManager, playerStats, cameraHandler, weaponSlotManager);
-            playerAnimatorManager.animator.SetBool("IsFiringSpell", true);
-        }
-
-        private void PerformLightAttackMeleeAction()
-        {
-
-            if ( playerManager.canDoCombo )
-            {
-                inputHandler.comboFlag = true;
-                playerAnimatorManager.animator.SetBool("IsUsingRightHand", true); // Todo: think of removing it here - but where (?) -oo-> Animator handler + appropriate fct. 
-                HandleWeaponCombo(playerInventory.rightWeapon);
-                inputHandler.comboFlag = false;
-            }
-            else
-            {
-                if ( playerManager.isInteracting || playerManager.canDoCombo ) return;
-
-                playerAnimatorManager.animator.SetBool("IsUsingRightHand", true); // Todo: think of removing it here - but where (?) -oo-> Animator handler + appropriate fct. 
-                HandleLightAttack(playerInventory.rightWeapon);
             }
         }
 
@@ -352,5 +354,11 @@ namespace _Scripts._Player {
             playerManager.isBlocking = true;
         }
 
+        private void SuccessfullyCastSpell() // called on Animator Event
+        {
+            playerInventory.currentSpell.SuccessfullyCastSpell(playerAnimatorManager, playerStats, cameraHandler, weaponSlotManager);
+            playerAnimatorManager.animator.SetBool("IsFiringSpell", true);
+        }
     }
+
 }

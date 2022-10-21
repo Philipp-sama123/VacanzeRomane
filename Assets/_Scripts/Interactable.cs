@@ -15,8 +15,8 @@ namespace _Scripts {
 
         public virtual void Interact(PlayerManager playerManager)
         {
-            Debug.Log("You interacted with an Object");
-            // Called when Player Interacts
+            // Debug.Log("You interacted with an Object");
+            // Called when Player Interactss
         }
     }
 }

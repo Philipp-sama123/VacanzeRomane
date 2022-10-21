@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32b4f488e77c4fb9b5d412e99374768d, type: 3}
   m_Name: Enemy Attack 01
   m_EditorClassIdentifier: 
-  actionAnimation: OH_LightAttack_01
+  actionAnimation: '[Combat] OH_Sword_Attack1'
   canCombo: 1
   comboAction: {fileID: 11400000, guid: 5a88ed2cc7d6e4c96bd9fb6ddb28e5ed, type: 2}
   attackScore: 3

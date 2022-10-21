@@ -30,10 +30,10 @@ MonoBehaviour:
   ohHeavyAttack02: '[Attack] SwordCombo_2 02'
   ohHeavyAttack03: '[Attack] SwordCombo_2 03'
   ohHeavyAttack04: '-'
-  thLightAttack01: TH_LightAttack_01
-  thLightAttack02: TH_LightAttack_02
-  thHeavyAttack01: TH_HeavyAttack_01
-  thHeavyAttack02: TH_HeavyAttack_02
+  thLightAttack01: '[Combat] TH_Sword_Attack1'
+  thLightAttack02: '[Combat] TH_Sword_Attack2'
+  thHeavyAttack01: '[Combat] TH_Sword_HeavyAttack1'
+  thHeavyAttack02: '[Combat] TH_Sword_HeavyAttack2'
   weaponArt: 
   baseStaminaCost: 10
   lightAttackMultiplier: 1

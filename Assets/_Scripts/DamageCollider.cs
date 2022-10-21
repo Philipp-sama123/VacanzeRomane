@@ -7,8 +7,8 @@ namespace _Scripts {
     public class DamageCollider : MonoBehaviour {
         public CharacterManager characterManager; // gets loaded on LoadWeaponsDamageCollider // TODO: challenge this
         private Collider damageCollider;
-        
-        public bool enabledColliderOnStartup = false; 
+
+        public bool enabledColliderOnStartup = false;
         public int currentWeaponDamage = 25;
 
         private void Awake()
@@ -31,8 +31,7 @@ namespace _Scripts {
 
         private void OnTriggerEnter(Collider collision)
         {
-            Debug.Log("[Info] Attack registered on:  " + collision.name + " from " + gameObject.name);
-
+            // Debug.Log("[Info] Attack registered on:  " + collision.name + " from " + gameObject.name);
             if ( collision.CompareTag($"Player") )
             {
                 PlayerStats playerStats = collision.GetComponent<PlayerStats>();

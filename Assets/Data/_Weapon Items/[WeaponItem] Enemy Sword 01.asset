@@ -16,21 +16,30 @@ MonoBehaviour:
   itemName: Sword
   modelPrefab: {fileID: 1706719210492477003, guid: 2c64990278be344e981e8bd65eba5195, type: 3}
   isUnarmed: 0
+  baseDamage: 25
+  criticalDamageMultiplier: 5
+  physicalDamageAbsorption: 10
   rightHandIdle01: Right_Arm_Idle_01
   leftHandIdle01: Left_Arm_Idle_01
   twoHandIdle: TH_Idle_Sword_01
-  ohLightAttack01: OH_LightAttack_01
-  ohLightAttack02: OH_LightAttack_02
-  ohHeavyAttack01: OH_HeavyAttack_01
-  ohHeavyAttack02: OH_HeavyAttack_02
-  thLightAttack01: 
-  thLightAttack02: 
-  thHeavyAttack01: 
-  thHeavyAttack02: 
+  ohLightAttack01: '[Combat] OH_Sword_Attack1'
+  ohLightAttack02: '[Combat] OH_Sword_Attack2'
+  ohLightAttack03: '[Combat] OH_Sword_Attack3'
+  ohLightAttack04: TODO
+  ohHeavyAttack01: '[Combat] OH_Sword_HeavyAttack1'
+  ohHeavyAttack02: '[Combat] OH_Sword_HeavyAttack2'
+  ohHeavyAttack03: TODO
+  ohHeavyAttack04: TODO
+  thLightAttack01: TODO
+  thLightAttack02: TODO
+  thHeavyAttack01: TODO
+  thHeavyAttack02: TODO
+  weaponArt: TODO
   baseStaminaCost: 20
   lightAttackMultiplier: 1
   heavyAttackMultiplier: 2
   isMeleeWeapon: 1
+  isShieldWeapon: 0
   isSpellCaster: 0
   isFaithCaster: 0
   isPyroCaster: 0
