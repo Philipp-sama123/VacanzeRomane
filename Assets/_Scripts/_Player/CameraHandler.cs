@@ -55,18 +55,9 @@ namespace _Scripts._Player {
             myTransform = transform;
 
             defaultPosition = cameraTransform.localPosition.z;
-            // environmentLayer = ~(1 << 8 | 1 << 9 | 1 << 12);
             targetTransform = FindObjectOfType<PlayerManager>().transform;
             inputHandler = FindObjectOfType<InputHandler>();
             playerManager = FindObjectOfType<PlayerManager>();
-
-            // Camera is to fast without it
-            // Application.targetFrameRate = 60;
-        }
-
-        private void Start()
-        {
-            environmentLayer = LayerMask.NameToLayer("Environment");
         }
 
         public void FollowTarget()

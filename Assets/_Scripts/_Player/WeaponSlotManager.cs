@@ -176,7 +176,6 @@ namespace _Scripts._Player {
 
         #endregion
 
-        // Todo: think of refactoring
         #region Handle Weapon's Stamina Drain
 
         public void DrainStaminaLightAttack()

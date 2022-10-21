@@ -14,11 +14,11 @@ namespace _Scripts {
         public float maxMana;
         public float currentMana;
 
-        public int soulCount = 0; 
-        
+        public int soulCount = 0;
+
         public bool isDead;
 
-        public virtual void TakeDamage(int damage,string damageAnimation="[Combat Action] Damage_01")
+        public virtual void TakeDamage(int damage, string damageAnimation = "[Combat Action] Damage_01")
         {
         }
     }

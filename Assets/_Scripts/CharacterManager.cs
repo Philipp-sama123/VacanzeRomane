@@ -17,7 +17,7 @@ namespace _Scripts {
         [Header("Spells")]
         public bool isFiringSpell; 
 
-        // Damage will be inflicted during an Animation
+        // Damage will be inflicted during an Animation Event
         // Used in backstab or riposte animations
         public int pendingCriticalDamage;
         
