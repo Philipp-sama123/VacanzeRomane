@@ -21,7 +21,7 @@ MonoBehaviour:
   physicalDamageAbsorption: 10
   rightHandIdle01: Right Arm Empty
   leftHandIdle01: Left Arm Empty
-  twoHandIdle: TODO
+  twoHandIdle: TH_Idle_Sword_01
   ohLightAttack01: '[Combat] Punch Left'
   ohLightAttack02: '[Combat] Punch Right'
   ohLightAttack03: '[Combat] Punch Left'

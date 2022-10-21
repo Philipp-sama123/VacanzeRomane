@@ -182,7 +182,6 @@ namespace _Scripts._Player {
             if ( rbInput )
             {
                 playerAttacker.HandleRbInput();
-                // TODO: second hand vs
             }
             if ( lbInput )
             {

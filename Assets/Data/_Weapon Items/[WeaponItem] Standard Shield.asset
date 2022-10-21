@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75792f40263a4f109cba9535258a3368, type: 3}
   m_Name: '[WeaponItem] Standard Shield'
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 21300000, guid: 30c3473b99a93ab48a29a89a1b7cced2, type: 3}
+  itemIcon: {fileID: 21300000, guid: 3c5b75807a3286a42874989d6dc58813, type: 3}
   itemName: BroadSword
   modelPrefab: {fileID: 1706719210492477003, guid: 0ac4f737949954011885f5b8740601fb, type: 3}
   isUnarmed: 0
@@ -24,8 +24,12 @@ MonoBehaviour:
   twoHandIdle: TH_Idle_Sword_01
   ohLightAttack01: OH_LightAttack_01
   ohLightAttack02: OH_LightAttack_02
+  ohLightAttack03: 
+  ohLightAttack04: 
   ohHeavyAttack01: OH_HeavyAttack_01
   ohHeavyAttack02: OH_HeavyAttack_02
+  ohHeavyAttack03: 
+  ohHeavyAttack04: 
   thLightAttack01: 
   thLightAttack02: 
   thHeavyAttack01: 

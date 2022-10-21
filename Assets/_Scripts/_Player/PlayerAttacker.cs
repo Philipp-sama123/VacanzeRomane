@@ -34,12 +34,10 @@ namespace _Scripts._Player {
             else Debug.LogWarning("[Action Required] No main Camera in Scene!");
         }
 
-
         public void HandleRbInput()
         {
-            if ( playerInventory.rightWeapon.isMeleeWeapon )
+            if ( playerInventory.rightWeapon.isMeleeWeapon)
             {
-                // Handle Melee Action 
                 PerformLightAttackMeleeAction();
             }
             else if (
@@ -48,14 +46,12 @@ namespace _Scripts._Player {
                 || playerInventory.rightWeapon.isPyroCaster
             )
             {
-                // Handle Magic Spell casting
                 PerformRbMagicAction(playerInventory.rightWeapon);
             }
             else
             {
                 Debug.LogWarning("[Action Required] Please assign a WeaponType for your current weapon in the inspector");
             }
-
         }
 
         public void HandleRtInput(WeaponItem weapon)
@@ -120,14 +116,12 @@ namespace _Scripts._Player {
                     {
                         playerAnimatorManager.PlayTargetAnimation("[Magic] No Mana", true);
                     }
-                    // Check for FP (!)
                 }
             }
             if ( weapon.isPyroCaster )
             {
                 if ( playerInventory.currentSpell != null && playerInventory.currentSpell.isPyroSpell )
                 {
-
                     if ( playerStats.currentMana >= playerInventory.currentSpell.manaCost )
                     {
                         playerInventory.currentSpell.AttemptToCastSpell(playerAnimatorManager, playerStats, weaponSlotManager);
@@ -136,7 +130,6 @@ namespace _Scripts._Player {
                     {
                         playerAnimatorManager.PlayTargetAnimation("[Magic] No Mana", true);
                     }
-                    // Check for FP (!)
                 }
             }
         }
@@ -336,7 +329,7 @@ namespace _Scripts._Player {
                 }
                 else
                 {
-                 // ToDo: when new riposting input -- Animation for no riposte possible
+                    // ToDo: when new riposting input -- Animation for no riposte possible
                 }
 
             }

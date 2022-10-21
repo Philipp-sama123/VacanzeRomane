@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75792f40263a4f109cba9535258a3368, type: 3}
   m_Name: '[WeaponItem] Enemy Standard Axe'
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 21300000, guid: c646d600d1539604a8e82573a3b3233a, type: 3}
+  itemIcon: {fileID: 21300000, guid: 3e1968aed1bd6284d87ec5a8b63f1683, type: 3}
   itemName: Sword
   modelPrefab: {fileID: 1706719210492477003, guid: 6a5c9e01999c245a3b81b40f7767c85a, type: 3}
   isUnarmed: 0
