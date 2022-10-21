@@ -110,11 +110,11 @@ namespace _Scripts._Player {
 
         private void HandleCameraCollisions()
         {
+            // ToDo: handle Camera collision on sword attack
             targetPosition = defaultPosition;
             RaycastHit hit;
             Vector3 direction = cameraTransform.position - cameraPivotTransform.position;
             direction.Normalize();
-
             if ( Physics.SphereCast
                 (cameraPivotTransform.position, cameraSphereRadius, direction, out hit, Mathf.Abs(targetPosition)
                     , ignoreLayers) )

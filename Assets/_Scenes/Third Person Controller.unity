@@ -3097,18 +3097,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1530983100, guid: b4d039a934c8e48b99d3f40352742c81, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 1248ae1d38e3e514487cecfc78bb8b6c, type: 3}
-    - target: {fileID: 416894875053586985, guid: b4d039a934c8e48b99d3f40352742c81, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 416894875053586985, guid: b4d039a934c8e48b99d3f40352742c81, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 416894876106741634, guid: b4d039a934c8e48b99d3f40352742c81, type: 3}
       propertyPath: m_Name
       value: 'Player UI '
@@ -3197,26 +3185,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 785554292442428009, guid: b4d039a934c8e48b99d3f40352742c81, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 785554292442428009, guid: b4d039a934c8e48b99d3f40352742c81, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4253023556985688021, guid: b4d039a934c8e48b99d3f40352742c81, type: 3}
       propertyPath: playerInventory
       value: 
       objectReference: {fileID: 872492489}
-    - target: {fileID: 8808565204326117839, guid: b4d039a934c8e48b99d3f40352742c81, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8808565204326117839, guid: b4d039a934c8e48b99d3f40352742c81, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4d039a934c8e48b99d3f40352742c81, type: 3}
 --- !u!4 &1861490331795106731 stripped

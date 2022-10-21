@@ -34,9 +34,12 @@ namespace _Scripts._Player {
             else Debug.LogWarning("[Action Required] No main Camera in Scene!");
         }
 
+        /**
+        * General ToDo: handle the second Hand ! 
+        */
         public void HandleRbInput()
         {
-            if ( playerInventory.rightWeapon.isMeleeWeapon)
+            if ( playerInventory.rightWeapon.isMeleeWeapon )
             {
                 PerformLightAttackMeleeAction();
             }
