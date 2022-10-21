@@ -84,7 +84,7 @@ MonoBehaviour:
   cameraTransformPosition: {x: 0, y: 0, z: 0}
   ignoreLayers:
     serializedVersion: 2
-    m_Bits: 513
+    m_Bits: 1
   environmentLayer:
     serializedVersion: 2
     m_Bits: 257
