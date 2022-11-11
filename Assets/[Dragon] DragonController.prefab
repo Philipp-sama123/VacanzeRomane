@@ -1372,7 +1372,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 848b524e5d172ac4fa51498355de5606, type: 2}
+  - {fileID: 2100000, guid: caa1677166593144f89082284f83ae44, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1844,7 +1844,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0af670ef663e7e34d9634b966680bc8f, type: 2}
+  - {fileID: 2100000, guid: 0f5178170bdfd01438549c2b30378e54, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2408,7 +2408,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7252430226902645692
 Transform:
   m_ObjectHideFlags: 0
@@ -4510,8 +4510,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7258580051232723372}
-  - component: {fileID: 7340952922876053296}
-  - component: {fileID: 7340952922876053297}
   m_Layer: 11
   m_Name: ' Irval Dragon '
   m_TagString: Animal
@@ -4537,38 +4535,6 @@ Transform:
   m_Father: {fileID: 7256647648319719387}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &7340952922876053296
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7256071035879400768}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 71f51002475da4d4faa421addcf11ee5, type: 3}
-  m_Controller: {fileID: 9100000, guid: ca7683de12fb9dd4b9fe859fdae32e9a, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 1
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &7340952922876053297
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7256071035879400768}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0802e497e16b9442aec6714f636f1f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7256071540476145882
 GameObject:
   m_ObjectHideFlags: 0
@@ -5011,11 +4977,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7256647648319719387}
-  - component: {fileID: 7256647648319719386}
-  - component: {fileID: 7256647648319719385}
+  - component: {fileID: 1627530463}
   - component: {fileID: 7256647648319719384}
   - component: {fileID: 7256647648319719391}
   - component: {fileID: 7256647648319719390}
+  - component: {fileID: 1627530462}
   m_Layer: 0
   m_Name: '[Dragon] DragonController'
   m_TagString: Untagged
@@ -5040,36 +5006,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &7256647648319719386
-Rigidbody:
+--- !u!95 &1627530463
+Animator:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7256647648319719389}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
---- !u!136 &7256647648319719385
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7256647648319719389}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.75
-  m_Height: 4
-  m_Direction: 2
-  m_Center: {x: 0, y: 1.75, z: 0.5}
+  m_Avatar: {fileID: 9000000, guid: 71f51002475da4d4faa421addcf11ee5, type: 3}
+  m_Controller: {fileID: 9100000, guid: ca7683de12fb9dd4b9fe859fdae32e9a, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 1
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &7256647648319719384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5082,6 +5038,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ada1b564496d8e4887f442299ebc838, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  verticalMovementInput: 0
+  horizontalMovementInput: 0
+  verticalCameraInput: 0
+  horizontalCameraInput: 0
 --- !u!114 &7256647648319719391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5094,6 +5054,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4ac11dc8b84f244f9cb930e0305535c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerCamera: {fileID: 0}
+  rotationSpeed: 5
 --- !u!114 &7256647648319719390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5106,15 +5068,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5944ae3a76fadea4683b54dc6338f2b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lockOnTransform: {fileID: 7256647648839633156}
-  riposteCollider: {fileID: 0}
-  backStabCollider: {fileID: 0}
-  canBeRiposted: 0
-  canBeParried: 0
-  isParrying: 0
-  isBlocking: 0
-  isFiringSpell: 0
-  pendingCriticalDamage: 0
+--- !u!114 &1627530462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7256647648319719389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0802e497e16b9442aec6714f636f1f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7256647648839633163
 GameObject:
   m_ObjectHideFlags: 0
@@ -5139,7 +5104,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7256647648839633163}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 3, z: 3.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

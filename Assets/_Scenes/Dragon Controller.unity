@@ -2691,38 +2691,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ada1b564496d8e4887f442299ebc838, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1627530462
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1627530455}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0802e497e16b9442aec6714f636f1f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!95 &1627530463
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1627530455}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 71f51002475da4d4faa421addcf11ee5, type: 3}
-  m_Controller: {fileID: 9100000, guid: ca7683de12fb9dd4b9fe859fdae32e9a, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 1
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1656299520
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3567,30 +3535,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7255435581834178158, guid: 9dc50d45269dad541a0957deef2f9cc0, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7255555846905338010, guid: 9dc50d45269dad541a0957deef2f9cc0, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7255705151829873316, guid: 9dc50d45269dad541a0957deef2f9cc0, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7256647648319719385, guid: 9dc50d45269dad541a0957deef2f9cc0, type: 3}
-      propertyPath: m_Center.y
-      value: 1.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 7256647648319719386, guid: 9dc50d45269dad541a0957deef2f9cc0, type: 3}
-      propertyPath: m_Interpolate
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7256647648319719386, guid: 9dc50d45269dad541a0957deef2f9cc0, type: 3}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7256647648319719387, guid: 9dc50d45269dad541a0957deef2f9cc0, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -3640,72 +3584,10 @@ PrefabInstance:
       value: '[Dragon] DragonController'
       objectReference: {fileID: 0}
     - target: {fileID: 7256647648319719391, guid: 9dc50d45269dad541a0957deef2f9cc0, type: 3}
-      propertyPath: jumpHeight
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 7256647648319719391, guid: 9dc50d45269dad541a0957deef2f9cc0, type: 3}
-      propertyPath: sprintSpeed
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 7256647648319719391, guid: 9dc50d45269dad541a0957deef2f9cc0, type: 3}
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 1740749538}
-    - target: {fileID: 7256647648319719391, guid: 9dc50d45269dad541a0957deef2f9cc0, type: 3}
-      propertyPath: runningSpeed
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7256647648319719391, guid: 9dc50d45269dad541a0957deef2f9cc0, type: 3}
-      propertyPath: walkingSpeed
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7256647648319719391, guid: 9dc50d45269dad541a0957deef2f9cc0, type: 3}
-      propertyPath: movementSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7256647648319719391, guid: 9dc50d45269dad541a0957deef2f9cc0, type: 3}
-      propertyPath: rotationSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7256647648319719391, guid: 9dc50d45269dad541a0957deef2f9cc0, type: 3}
-      propertyPath: sprintingSpeed
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7256647648319719391, guid: 9dc50d45269dad541a0957deef2f9cc0, type: 3}
-      propertyPath: groundLayer.m_Bits
-      value: 257
-      objectReference: {fileID: 0}
-    - target: {fileID: 7256647648319719391, guid: 9dc50d45269dad541a0957deef2f9cc0, type: 3}
-      propertyPath: rayCastHeightOffSet
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7256647648319719391, guid: 9dc50d45269dad541a0957deef2f9cc0, type: 3}
-      propertyPath: minimumDistanceNeededToBeginFall
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7256647648839633156, guid: 9dc50d45269dad541a0957deef2f9cc0, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7256647648839633156, guid: 9dc50d45269dad541a0957deef2f9cc0, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 3.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7257389621490196562, guid: 9dc50d45269dad541a0957deef2f9cc0, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7301210104035524186, guid: 9dc50d45269dad541a0957deef2f9cc0, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 0f5178170bdfd01438549c2b30378e54, type: 2}
-    - target: {fileID: 7301356504566296358, guid: 9dc50d45269dad541a0957deef2f9cc0, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: caa1677166593144f89082284f83ae44, type: 2}
-    m_RemovedComponents:
-    - {fileID: 7340952922876053296, guid: 9dc50d45269dad541a0957deef2f9cc0, type: 3}
-    - {fileID: 7340952922876053297, guid: 9dc50d45269dad541a0957deef2f9cc0, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9dc50d45269dad541a0957deef2f9cc0, type: 3}
 --- !u!1001 &7783373143876940134
 PrefabInstance:

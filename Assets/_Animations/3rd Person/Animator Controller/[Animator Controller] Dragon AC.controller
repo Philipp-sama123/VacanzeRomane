@@ -2659,16 +2659,8 @@ BlendTree:
   m_Name: Idle/Sideways
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 429468e8cb18b0f4c9b8df7619a9205a, type: 3}
+    m_Motion: {fileID: 7400000, guid: 494943ef17c779a44be7f08be9cf5198, type: 2}
     m_Threshold: -1
-    m_Position: {x: 0, y: 0}
-    m_TimeScale: 1
-    m_CycleOffset: 0
-    m_DirectBlendParameter: Vertical
-    m_Mirror: 0
-  - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 370f09bb2402ae741adebb995c19d9ec, type: 3}
-    m_Threshold: -0.5
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -2683,15 +2675,7 @@ BlendTree:
     m_DirectBlendParameter: Vertical
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 59ea8da1d5dfef947be2ec795821bc58, type: 3}
-    m_Threshold: 0.5
-    m_Position: {x: 0, y: 0}
-    m_TimeScale: 1
-    m_CycleOffset: 0
-    m_DirectBlendParameter: Vertical
-    m_Mirror: 0
-  - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: e6c2d2fe39894914888ecfabb84393a8, type: 3}
+    m_Motion: {fileID: 7400000, guid: ea091266bbad9e14abd837a06874067d, type: 2}
     m_Threshold: 1
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
