@@ -6,6 +6,11 @@ namespace _Scripts._Dragon {
         DragonInputManager inputManager;
         DragonLocomotion playerLocomotionManager;
 
+        public bool isGrounded;
+        public bool isInAir;
+        public bool isSprinting;
+        public bool isUsingRootMotion;
+
         private void Awake()
         {
             playerCamera = FindObjectOfType<DragonCamera>();
@@ -16,16 +21,21 @@ namespace _Scripts._Dragon {
         private void Update()
         {
             inputManager.HandleAllInputs();
+            playerLocomotionManager.HandleJumping();
         }
 
         private void FixedUpdate()
         {
-            playerLocomotionManager.HandleAllLocomotion();
+
+            var deltaTime = Time.deltaTime;
+            playerLocomotionManager.HandleMovement();
+            playerLocomotionManager.HandleRotation(deltaTime);
         }
 
         private void LateUpdate()
         {
-            playerCamera.HandleAllCameraMovement();
+            playerCamera.FollowTarget();
+            playerCamera.RotateCamera(inputManager.horizontalCameraInput,inputManager.verticalCameraInput);
         }
     }
 }

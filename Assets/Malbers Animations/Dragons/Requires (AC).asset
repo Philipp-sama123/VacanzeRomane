@@ -15,24 +15,21 @@ MonoBehaviour:
   icon: {fileID: 2800000, guid: 6fed46b7047bdf94eb0425b756394e5b, type: 3}
   title: Requires Animal Controller 1.3b+
   sections:
-  - heading: Integration with Animal Controller (AC)
-    text: 'You will find the Asset fully integrated with (AC) in this unitypackage. '
+  - heading: Integration with Animal Controller
+    text: You will find the Asset fully integrated with the Malbers Animal Controller(AC)
+      in this unitypackage
     linkText: 
     url: 
     reference: {fileID: 0}
-  - heading: Please download the AC before unpacking the Integration.
+  - heading: If you are using the Animal Controller, please download the asset first
+      before unpacking the Integration!
     text: 
     linkText: 
     url: 
     reference: {fileID: 0}
-  - heading: 
-    text: 
-    linkText: 
-    url: 
-    reference: {fileID: 102900000, guid: b79c7fcfb0ce93d4986ded49145f814a, type: 3}
-  - heading: 
-    text: 
-    linkText: ANIMAL CONTROLLER
+  - heading: ' '
+    text: 'Download (AC) from the AssetStore here:'
+    linkText: "\u25BAANIMAL CONTROLLER\u25C4"
     url: https://assetstore.unity.com/packages/slug/148877?aid=1100lHT6
     reference: {fileID: 0}
   - heading: 
@@ -40,8 +37,13 @@ MonoBehaviour:
     linkText: Quick Guide to use the files
     url: https://malbersanimations.gitbook.io/animal-controller/quickstart/guide-to-use-malbers-unity-assets-with-ac
     reference: {fileID: 0}
-  - heading: If you do not want or need the Animal Controller, you can safely remove
-      the package
+  - heading: 
+    text: ' '
+    linkText: 
+    url: 
+    reference: {fileID: 0}
+  - heading: '**If you do not want or need the Controller you can safely remove this
+      folder**'
     text: 
     linkText: 
     url: 

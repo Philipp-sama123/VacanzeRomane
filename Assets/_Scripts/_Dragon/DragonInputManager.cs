@@ -9,22 +9,22 @@ using UnityEngine;
 public class DragonInputManager : MonoBehaviour
 {
     PlayerControls playerControls;
-    DragonAnimatorManager animatorManager;
 
     [Header("Player Movement")]
     public float verticalMovementInput;
     public float horizontalMovementInput;
+    public float moveAmount;
+    
     private Vector2 movementInput;
-
-    [Header("Camera Rotation")]
-    public float verticalCameraInput;
-    public float horizontalCameraInput;
     private Vector2 cameraInput;
 
-    private void Awake()
-    {
-        animatorManager = GetComponent<DragonAnimatorManager>();
-    }
+
+    [Header("Camera Rotation")]
+    public float horizontalCameraInput; 
+    public float verticalCameraInput; 
+    
+    public bool sprintFlag;
+    public bool jumpInput;
 
     private void OnEnable()
     {
@@ -34,6 +34,11 @@ public class DragonInputManager : MonoBehaviour
 
             playerControls.PlayerMovement.Movement.performed += i => movementInput = i.ReadValue<Vector2>();
             playerControls.PlayerMovement.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
+            
+            playerControls.PlayerActions.Jump.performed += i => jumpInput = true;
+            playerControls.PlayerActions.Roll.performed += i => sprintFlag = true;
+            playerControls.PlayerActions.Roll.canceled += i => sprintFlag = false;
+
         }
 
         playerControls.Enable();
@@ -48,14 +53,15 @@ public class DragonInputManager : MonoBehaviour
     {
         HandleMovementInput();
         HandleCameraInput();
-        //Handle SprintingInput
+        // HandleSprintingInput(); 
     }
+
 
     private void HandleMovementInput()
     {
         horizontalMovementInput = movementInput.x;
         verticalMovementInput = movementInput.y;
-        animatorManager.HandleAnimatorValues(horizontalMovementInput, verticalMovementInput);
+        moveAmount = Mathf.Clamp01(Mathf.Abs(horizontalMovementInput) + Mathf.Abs(verticalMovementInput));
     }
 
     private void HandleCameraInput()
