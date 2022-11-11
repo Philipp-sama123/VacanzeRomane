@@ -41,7 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6872253027459001018}
-  - component: {fileID: 6872253027459001019}
+  - component: {fileID: 1817658675}
   m_Layer: 0
   m_Name: '[Camera] CameraHolder'
   m_TagString: Untagged
@@ -65,7 +65,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6872253027459001019
+--- !u!114 &1817658675
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6872253027459001017}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34d9fac6a09914344bd814bddc3e1e42, type: 3}
+  m_Script: {fileID: 11500000, guid: 32a9394eea31e3547a568f64ae305514, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   targetTransform: {fileID: 0}
@@ -84,19 +84,19 @@ MonoBehaviour:
   cameraTransformPosition: {x: 0, y: 0, z: 0}
   ignoreLayers:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 0
   environmentLayer:
     serializedVersion: 2
-    m_Bits: 257
-  lookSpeed: 2
+    m_Bits: 0
+  lookSpeed: 0.05
   followSpeed: 0.1
-  pivotSpeed: 1.5
+  pivotSpeed: 0.03
   minimumPivot: -45
   maximumPivot: 45
   cameraSphereRadius: 0.2
   minimumCollisionOffset: 0.2
-  lockedPivotPosition: 1.75
-  unlockedPivotPosition: 1.25
+  lockedPivotPosition: 2.25
+  unlockedPivotPosition: 1.65
   availableTargets: []
   currentLockOnTarget: {fileID: 0}
   nearestLockOnTarget: {fileID: 0}
@@ -161,7 +161,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 45
+  field of view: 55
   orthographic: 0
   orthographic size: 5
   m_Depth: -1

@@ -8,53 +8,34 @@ using UnityEngine;
 
 public class DragonInputManager : MonoBehaviour
 {
-    private PlayerControls playerControls;
-    private DragonManager playerManager;
-    private DragonCameraManager cameraManager;
+    PlayerControls playerControls;
+    DragonAnimatorManager animatorManager;
 
-    public Vector2 movementInput;
-    public float horizontalInput;
-    public float verticalInput;
+    [Header("Player Movement")]
+    public float verticalMovementInput;
+    public float horizontalMovementInput;
+    private Vector2 movementInput;
 
-    public Vector2 cameraInput;
-    public float cameraInputX;
-    public float cameraInputY;
-
-    public float moveAmount;
-
-    public bool sprintInput;
-    public bool jumpInput;
-    public bool dodgeInput;
-
-    /** Lock On **/
-    public bool lockOnInput;
-    public bool lockOnFlag;
-    public bool rightStickLeftInput;
-    public bool rightStickRightInput;
+    [Header("Camera Rotation")]
+    public float verticalCameraInput;
+    public float horizontalCameraInput;
+    private Vector2 cameraInput;
 
     private void Awake()
     {
-        // todo: just import player manager
-        playerManager = GetComponent<DragonManager>();
-        cameraManager = FindObjectOfType<DragonCameraManager>();
+        animatorManager = GetComponent<DragonAnimatorManager>();
     }
 
     private void OnEnable()
     {
-        if ( playerControls == null )
+        if (playerControls == null)
         {
             playerControls = new PlayerControls();
 
             playerControls.PlayerMovement.Movement.performed += i => movementInput = i.ReadValue<Vector2>();
             playerControls.PlayerMovement.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
-
-            // while you hold it --> true!
-            playerControls.PlayerActions.Roll.performed += i => sprintInput = true;
-            playerControls.PlayerActions.Roll.canceled += i => sprintInput = false;
-            // when you press the button --> True
-            playerControls.PlayerActions.Jump.performed += i => jumpInput = true;
-            // playerControls.PlayerActions.Dodge.performed += i => dodgeInput = true;
         }
+
         playerControls.Enable();
     }
 
@@ -66,75 +47,20 @@ public class DragonInputManager : MonoBehaviour
     public void HandleAllInputs()
     {
         HandleMovementInput();
-        HandleSprintingInput();
-        HandleLockOnInput(); 
+        HandleCameraInput();
+        //Handle SprintingInput
     }
 
     private void HandleMovementInput()
     {
-        verticalInput = movementInput.y;
-        horizontalInput = movementInput.x;
-
-        cameraInputY = cameraInput.y;
-        cameraInputX = cameraInput.x;
-
-        moveAmount = Mathf.Clamp01(Mathf.Abs(horizontalInput) + Mathf.Abs(verticalInput));
+        horizontalMovementInput = movementInput.x;
+        verticalMovementInput = movementInput.y;
+        animatorManager.HandleAnimatorValues(horizontalMovementInput, verticalMovementInput);
     }
 
-    private void HandleSprintingInput()
+    private void HandleCameraInput()
     {
-        if ( sprintInput && moveAmount > 0.5f )
-        {
-            playerManager.isSprinting = true;
-        }
-        else
-        {
-            playerManager.isSprinting = false;
-        }
-    }
-
-    private void HandleLockOnInput()
-    {
-        if ( lockOnInput && lockOnFlag == false )
-        {
-            lockOnInput = false;
-            cameraManager.HandleLockOn();
-
-            if ( cameraManager.nearestLockOnTarget != null )
-            {
-                cameraManager.currentLockOnTarget = cameraManager.nearestLockOnTarget;
-                lockOnFlag = true;
-            }
-        }
-        else if ( lockOnInput && lockOnFlag )
-        {
-            lockOnInput = false;
-            lockOnFlag = false;
-            cameraManager.ClearLockOnTargets();
-        }
-
-        if ( lockOnFlag && rightStickLeftInput )
-        {
-            rightStickLeftInput = false;
-            cameraManager.HandleLockOn();
-
-            if ( cameraManager.leftLockTarget != null )
-            {
-                cameraManager.currentLockOnTarget = cameraManager.leftLockTarget;
-            }
-        }
-
-        if ( lockOnFlag && rightStickRightInput )
-        {
-            rightStickRightInput = false;
-            cameraManager.HandleLockOn();
-
-            if ( cameraManager.rightLockTarget != null )
-            {
-                cameraManager.currentLockOnTarget = cameraManager.rightLockTarget;
-            }
-        }
-        
-        cameraManager.SetCameraHeight();
+        horizontalCameraInput = cameraInput.x;
+        verticalCameraInput = cameraInput.y;
     }
 }
