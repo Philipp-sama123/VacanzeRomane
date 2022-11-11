@@ -2,9 +2,9 @@ using UnityEngine;
 
 namespace _Scripts._Dragon {
     public class DragonManager : MonoBehaviour {
-        DragonCamera playerCamera;
-        DragonInputManager inputManager;
-        DragonLocomotion playerLocomotionManager;
+        private DragonCamera dragonCamera;
+        private DragonInputManager dragonInputManager;
+        private DragonLocomotion dragonLocomotionManager;
 
         public bool isGrounded;
         public bool isInAir;
@@ -13,29 +13,29 @@ namespace _Scripts._Dragon {
 
         private void Awake()
         {
-            playerCamera = FindObjectOfType<DragonCamera>();
-            inputManager = GetComponent<DragonInputManager>();
-            playerLocomotionManager = GetComponent<DragonLocomotion>();
+            dragonCamera = FindObjectOfType<DragonCamera>();
+            dragonInputManager = GetComponent<DragonInputManager>();
+            dragonLocomotionManager = GetComponent<DragonLocomotion>();
         }
 
         private void Update()
         {
-            inputManager.HandleAllInputs();
-            playerLocomotionManager.HandleJumping();
+            dragonInputManager.HandleAllInputs();
         }
 
         private void FixedUpdate()
         {
 
             var deltaTime = Time.deltaTime;
-            playerLocomotionManager.HandleMovement();
-            playerLocomotionManager.HandleRotation(deltaTime);
+            dragonLocomotionManager.HandleMovement();
+            dragonLocomotionManager.HandleRotation(deltaTime);
+            dragonLocomotionManager.HandleJumping();
         }
 
         private void LateUpdate()
         {
-            playerCamera.FollowTarget();
-            playerCamera.RotateCamera(inputManager.horizontalCameraInput,inputManager.verticalCameraInput);
+            dragonCamera.FollowTarget();
+            dragonCamera.RotateCamera(dragonInputManager.horizontalCameraInput, dragonInputManager.verticalCameraInput);
         }
     }
 }
