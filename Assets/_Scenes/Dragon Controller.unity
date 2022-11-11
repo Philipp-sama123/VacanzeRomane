@@ -3628,11 +3628,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7256647648319719391, guid: 9dc50d45269dad541a0957deef2f9cc0, type: 3}
       propertyPath: runningSpeed
-      value: 20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7256647648319719391, guid: 9dc50d45269dad541a0957deef2f9cc0, type: 3}
       propertyPath: walkingSpeed
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7256647648319719391, guid: 9dc50d45269dad541a0957deef2f9cc0, type: 3}
       propertyPath: movementSpeed
@@ -3644,7 +3644,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7256647648319719391, guid: 9dc50d45269dad541a0957deef2f9cc0, type: 3}
       propertyPath: sprintingSpeed
-      value: 40
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7256647648319719391, guid: 9dc50d45269dad541a0957deef2f9cc0, type: 3}
       propertyPath: groundLayer.m_Bits

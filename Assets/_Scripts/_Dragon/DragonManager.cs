@@ -34,7 +34,7 @@ namespace _Scripts._Dragon
         private void Update()
         {
             _inputManager.HandleAllInputs();
-            _animatorManager.UpdateAnimatorValues(0, _inputManager.moveAmount, isSprinting);
+            _animatorManager.UpdateAnimatorValues(_inputManager.horizontalInput, _inputManager.verticalInput, isSprinting);
             if (_inputManager.jumpInput)
             {
                 _inputManager.jumpInput = false;
