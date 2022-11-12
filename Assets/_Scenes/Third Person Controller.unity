@@ -3410,6 +3410,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1817658675, guid: bb49069eb254d49759ab115af624ac93, type: 3}
+      propertyPath: lookSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1817658675, guid: bb49069eb254d49759ab115af624ac93, type: 3}
+      propertyPath: pivotSpeed
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 6872253027459001017, guid: bb49069eb254d49759ab115af624ac93, type: 3}
       propertyPath: m_Name
       value: '[Camera] CameraHolder'

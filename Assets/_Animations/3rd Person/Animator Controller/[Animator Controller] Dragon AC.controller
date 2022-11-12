@@ -1342,7 +1342,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 1fe67badaeef26f4fbf10b6b12383dcf, type: 2}
+  m_Motion: {fileID: 7400000, guid: a30a2d9561988d2409a1871a00982d61, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -2226,7 +2226,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: '[Airborne] Running Jump'
+  m_Name: Running Jump
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -2241,7 +2241,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 5b042bc2eb86641f6b76307c56ba08bf, type: 2}
+  m_Motion: {fileID: 7400000, guid: abb7275adee42f64486b1d91e915083f, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

@@ -2,16 +2,15 @@ using UnityEngine;
 
 namespace _Scripts._Dragon {
     public class DragonInputManager : MonoBehaviour {
-        PlayerControls playerControls;
-        public float moveAmount { get; private set; }
-        public float verticalMovementInput { get; private set; }
+        private PlayerControls playerControls;
         public float horizontalMovementInput { get; private set; }
+        public float verticalMovementInput { get; private set; }
         public float horizontalCameraInput { get; private set; }
         public float verticalCameraInput { get; private set; }
+        public float moveAmount { get; private set; }
 
         private Vector2 movementInput;
         private Vector2 cameraInput;
-
 
         [Header("Camera Rotation")]
         public bool sprintFlag;

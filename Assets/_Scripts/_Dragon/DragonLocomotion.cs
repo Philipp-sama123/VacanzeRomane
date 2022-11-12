@@ -67,7 +67,7 @@ namespace _Scripts._Dragon {
             targetDir = cameraObject.forward * dragonInputHandler.verticalMovementInput;
             targetDir += cameraObject.right * dragonInputHandler.horizontalMovementInput;
             targetDir.Normalize();
-            targetDir.y = 0; 
+            targetDir.y = 0;
 
             if ( targetDir == Vector3.zero )
                 targetDir = myTransform.forward;
@@ -111,12 +111,12 @@ namespace _Scripts._Dragon {
             Vector3 projectedVelocity = Vector3.ProjectOnPlane(moveDirection, normalVector);
             rigidbody.velocity = projectedVelocity;
             dragonAnimatorManager.HandleAnimatorValues(0, dragonInputHandler.moveAmount, dragonManager.isSprinting);
-           
+
             HandleFalling(Time.deltaTime, moveDirection);
         }
 
 
-        public void HandleFalling(float deltaTime, Vector3 moveDirection)
+        private void HandleFalling(float deltaTime, Vector3 moveDirection)
         {
             dragonManager.isGrounded = false;
             RaycastHit hit;
@@ -190,20 +190,20 @@ namespace _Scripts._Dragon {
 
             // ToDo: put in update ! because it makes the character jittery in fixed update -> Transform manipulation vs Rigidbody
             // maybe calculate velocity required to put the player up
-
-            if ( dragonManager.isUsingRootMotion || dragonInputHandler.moveAmount > 0 )
             {
-                // rigidbody.MovePosition(targetPosition);
-                Debug.LogWarning("Align Feet");
-                myTransform.position = Vector3.Lerp(myTransform.position, targetPosition, deltaTime);
+                if ( dragonInputHandler.moveAmount > 0 )
+                {
+                    // rigidbody.MovePosition(targetPosition);
+                    Debug.LogWarning("Align Feet");
+                    myTransform.position = Vector3.Lerp(myTransform.position, targetPosition, deltaTime);
+                }
+                else
+                {
+                    Debug.LogWarning("Align Feet no Movement");
+                    // rigidbody.MovePosition(targetPosition);
+                    myTransform.position = targetPosition;
+                }
             }
-            else
-            {
-                Debug.LogWarning("Align Feet no Movement");
-                // rigidbody.MovePosition(targetPosition);
-                myTransform.position = targetPosition;
-            }
-
         }
 
 
@@ -212,17 +212,12 @@ namespace _Scripts._Dragon {
             if ( dragonInputHandler.jumpInput )
             {
                 dragonInputHandler.jumpInput = false;
-                dragonAnimatorManager.PlayTargetAnimation("Standing Jump", true);
-                Vector3 forceUp = Vector3.up * 100;
-                rigidbody.AddForce(forceUp, ForceMode.Impulse);
-                if ( dragonInputHandler.moveAmount > 0 )
-                {
-                    moveDirection = cameraObject.forward * dragonInputHandler.verticalMovementInput;
-                    moveDirection += cameraObject.right * dragonInputHandler.horizontalMovementInput;
-                    Quaternion jumpRotation = Quaternion.LookRotation(moveDirection);
-                    myTransform.rotation = jumpRotation;
-                }
-                // Todo: maye add some force
+                // Todo: maye add some force or movement
+                // moveDirection = cameraObject.forward * dragonInputHandler.verticalMovementInput;
+                // moveDirection += cameraObject.right * dragonInputHandler.horizontalMovementInput;
+                // Quaternion jumpRotation = Quaternion.LookRotation(moveDirection);
+                // myTransform.rotation = jumpRotation;
+                dragonAnimatorManager.PlayTargetAnimation(dragonInputHandler.moveAmount > 0 ? "Running Jump" : "Standing Jump", true);
             }
         }
 

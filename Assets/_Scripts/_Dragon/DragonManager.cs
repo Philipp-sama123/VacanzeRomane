@@ -5,6 +5,7 @@ namespace _Scripts._Dragon {
         private DragonCamera dragonCamera;
         private DragonInputManager dragonInputManager;
         private DragonLocomotion dragonLocomotionManager;
+        private DragonAnimatorManager dragonAnimatorManager;
 
         public bool isGrounded;
         public bool isInAir;
@@ -16,16 +17,17 @@ namespace _Scripts._Dragon {
             dragonCamera = FindObjectOfType<DragonCamera>();
             dragonInputManager = GetComponent<DragonInputManager>();
             dragonLocomotionManager = GetComponent<DragonLocomotion>();
+            dragonAnimatorManager = GetComponent<DragonAnimatorManager>();
         }
 
         private void Update()
         {
             dragonInputManager.HandleAllInputs();
+            isUsingRootMotion = dragonAnimatorManager.animator.GetBool("IsInteracting"); 
         }
 
         private void FixedUpdate()
         {
-
             var deltaTime = Time.deltaTime;
             dragonLocomotionManager.HandleMovement();
             dragonLocomotionManager.HandleRotation(deltaTime);

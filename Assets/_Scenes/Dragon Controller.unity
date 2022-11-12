@@ -1647,7 +1647,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 45
+  field of view: 65
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -1893,8 +1893,8 @@ MonoBehaviour:
   myTransform: {fileID: 1740749538}
   targetTransform: {fileID: 4294132931051918}
   lookSpeed: 1
-  followSpeed: 0.1
-  pivotSpeed: 0.1
+  followSpeed: 0.25
+  pivotSpeed: 0.5
   minimumPivot: -45
   maximumPivot: 45
 --- !u!4 &1070551416 stripped
@@ -2903,10 +2903,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4ac11dc8b84f244f9cb930e0305535c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveDirection: {x: 0, y: 0, z: 0}
   myTransform: {fileID: 0}
   rigidbody: {fileID: 0}
-  normalCamera: {fileID: 0}
   groundDetectionRayStartPoint: 1
   minimumDistanceNeededToBeginFall: 2
   groundDirectionRayDistance: 0.25
@@ -2935,11 +2933,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ada1b564496d8e4887f442299ebc838, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  verticalMovementInput: 0
-  horizontalMovementInput: 0
-  moveAmount: 0
-  horizontalCameraInput: 0
-  verticalCameraInput: 0
   sprintFlag: 0
   jumpInput: 0
 --- !u!4 &1815739063
