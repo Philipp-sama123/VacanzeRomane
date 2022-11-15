@@ -601,7 +601,7 @@ BlendTree:
   m_Name: Run Forwards
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: d524a39b86664d549a9abc325183ea8e, type: 2}
+    m_Motion: {fileID: 7400004, guid: aff0e7512cf8c0a4da53b98f9541b050, type: 3}
     m_Threshold: -0.5
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -609,7 +609,7 @@ BlendTree:
     m_DirectBlendParameter: Vertical
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: c555c8bc542183e4497f4a7fe0447027, type: 2}
+    m_Motion: {fileID: 7400000, guid: aff0e7512cf8c0a4da53b98f9541b050, type: 3}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -617,7 +617,7 @@ BlendTree:
     m_DirectBlendParameter: Vertical
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: ff23fa3f0fddc13408297598aec0514e, type: 2}
+    m_Motion: {fileID: 7400002, guid: aff0e7512cf8c0a4da53b98f9541b050, type: 3}
     m_Threshold: 0.5
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -1111,7 +1111,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: '[Animator Controller] Dragon AC'
+  m_Name: '[Animator Controller] LittleDragon AC'
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Vertical
@@ -1342,7 +1342,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: a30a2d9561988d2409a1871a00982d61, type: 2}
+  m_Motion: {fileID: 7400030, guid: 0f41ebad585600c40a0e963e6261f83d, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -1556,7 +1556,7 @@ BlendTree:
   m_Name: Walk Forwards
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 494943ef17c779a44be7f08be9cf5198, type: 2}
+    m_Motion: {fileID: 5991709088358463595, guid: 4dc97164bca00ee43b3edd621409e1e4, type: 3}
     m_Threshold: -0.5
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -1564,7 +1564,7 @@ BlendTree:
     m_DirectBlendParameter: Vertical
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: ac136140abee0d5458df4e4df442826b, type: 2}
+    m_Motion: {fileID: 5991709088358463595, guid: c00731fabf82b1e4b8b04c290bca9eaa, type: 3}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -1572,7 +1572,7 @@ BlendTree:
     m_DirectBlendParameter: Vertical
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: ea091266bbad9e14abd837a06874067d, type: 2}
+    m_Motion: {fileID: 5991709088358463595, guid: 199ff8f304ae37c4cbd6615de42475a2, type: 3}
     m_Threshold: 0.5
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -2241,7 +2241,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: abb7275adee42f64486b1d91e915083f, type: 2}
+  m_Motion: {fileID: 7400030, guid: 6ee9fb4f4d27ff546a06a69503c932e7, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -2256,7 +2256,7 @@ BlendTree:
   m_Name: Idle/Sideways
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 494943ef17c779a44be7f08be9cf5198, type: 2}
+    m_Motion: {fileID: 5991709088358463595, guid: 15036c594805d5045b25859d393131db, type: 3}
     m_Threshold: -1
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -2264,7 +2264,7 @@ BlendTree:
     m_DirectBlendParameter: Vertical
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: e5b71bc836b89144e930f53193f80258, type: 3}
+    m_Motion: {fileID: 7400000, guid: c7b9ed1eb5ede424db387c8850cbcdb3, type: 3}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -2272,7 +2272,7 @@ BlendTree:
     m_DirectBlendParameter: Vertical
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: ea091266bbad9e14abd837a06874067d, type: 2}
+    m_Motion: {fileID: 1827226128182048838, guid: 6e9786a12f70c594b9adf3b3930a9eb9, type: 3}
     m_Threshold: 1
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -2344,7 +2344,7 @@ BlendTree:
   m_Name: Walk Backwards
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: e28833678e928d748ad7c83dbf70383d, type: 2}
+    m_Motion: {fileID: 5991709088358463595, guid: 12c90856c3461334581e452a850be199, type: 3}
     m_Threshold: -0.5
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -2352,7 +2352,7 @@ BlendTree:
     m_DirectBlendParameter: Vertical
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 61eb7b85b97e9ce4fb58811ddb47ee5c, type: 2}
+    m_Motion: {fileID: 5991709088358463595, guid: e91aedf6fe2dd1f41b08c4c3f664cb9f, type: 3}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -2360,7 +2360,7 @@ BlendTree:
     m_DirectBlendParameter: Vertical
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 2c27f32231e565d4dbb8580d3795e25b, type: 2}
+    m_Motion: {fileID: 5991709088358463595, guid: 11af7f16640a8cc45a6e95b2554521d1, type: 3}
     m_Threshold: 0.5
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -2794,7 +2794,7 @@ BlendTree:
   m_Name: Trot Forwards
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: de4a97276216840b08d85465e4fdc4c6, type: 2}
+    m_Motion: {fileID: 7400004, guid: e888665057256024fba0fceb4348ef98, type: 3}
     m_Threshold: -1
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -2802,7 +2802,7 @@ BlendTree:
     m_DirectBlendParameter: Vertical
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: cfe2965d9dd5f4592a4468b9c4326022, type: 2}
+    m_Motion: {fileID: 7400000, guid: e888665057256024fba0fceb4348ef98, type: 3}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -2810,7 +2810,7 @@ BlendTree:
     m_DirectBlendParameter: Vertical
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 0ff109ccedf3b48d2848555e98264749, type: 2}
+    m_Motion: {fileID: 7400002, guid: e888665057256024fba0fceb4348ef98, type: 3}
     m_Threshold: 1
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1

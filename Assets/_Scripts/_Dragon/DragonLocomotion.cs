@@ -190,20 +190,22 @@ namespace _Scripts._Dragon {
 
             // ToDo: put in update ! because it makes the character jittery in fixed update -> Transform manipulation vs Rigidbody
             // maybe calculate velocity required to put the player up
+            // if ( dragonManager.isInAir == false )
+            // {
+            if ( dragonInputHandler.moveAmount > 0 )
             {
-                if ( dragonInputHandler.moveAmount > 0 )
-                {
-                    // rigidbody.MovePosition(targetPosition);
-                    Debug.LogWarning("Align Feet");
-                    myTransform.position = Vector3.Lerp(myTransform.position, targetPosition, deltaTime);
-                }
-                else
-                {
-                    Debug.LogWarning("Align Feet no Movement");
-                    // rigidbody.MovePosition(targetPosition);
-                    myTransform.position = targetPosition;
-                }
+                // rigidbody.MovePosition(targetPosition);
+                Debug.LogWarning("Align Feet");
+                myTransform.position = targetPosition;
+                // myTransform.position = Vector3.Lerp(myTransform.position, targetPosition, deltaTime);
             }
+            else
+            {
+                Debug.LogWarning("Align Feet no Movement");
+                // rigidbody.MovePosition(targetPosition);
+                myTransform.position = targetPosition;
+            }
+            // }
         }
 
 
@@ -211,13 +213,16 @@ namespace _Scripts._Dragon {
         {
             if ( dragonInputHandler.jumpInput )
             {
+                // dragonAnimatorManager.animator.SetBool("IsInAir", true);
                 dragonInputHandler.jumpInput = false;
+
                 // Todo: maye add some force or movement
                 // moveDirection = cameraObject.forward * dragonInputHandler.verticalMovementInput;
                 // moveDirection += cameraObject.right * dragonInputHandler.horizontalMovementInput;
                 // Quaternion jumpRotation = Quaternion.LookRotation(moveDirection);
                 // myTransform.rotation = jumpRotation;
-                dragonAnimatorManager.PlayTargetAnimation(dragonInputHandler.moveAmount > 0 ? "Running Jump" : "Standing Jump", true);
+                dragonManager.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up * 100f, ForceMode.Impulse);
+                dragonAnimatorManager.PlayTargetAnimation(dragonInputHandler.moveAmount > 0 ? "Running Jump" : "Standing Jump", false);
             }
         }
 
