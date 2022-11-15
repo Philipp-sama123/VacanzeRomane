@@ -194,10 +194,10 @@ namespace _Scripts._Dragon {
             // {
             if ( dragonInputHandler.moveAmount > 0 )
             {
-                // rigidbody.MovePosition(targetPosition);
+                // rigidbody.AddForce(targetPosition);
                 Debug.LogWarning("Align Feet");
-                myTransform.position = targetPosition;
-                // myTransform.position = Vector3.Lerp(myTransform.position, targetPosition, deltaTime);
+                // myTransform.position = targetPosition;
+                myTransform.position = Vector3.Lerp(myTransform.position, targetPosition, deltaTime / .2f);
             }
             else
             {
@@ -221,9 +221,19 @@ namespace _Scripts._Dragon {
                 // moveDirection += cameraObject.right * dragonInputHandler.horizontalMovementInput;
                 // Quaternion jumpRotation = Quaternion.LookRotation(moveDirection);
                 // myTransform.rotation = jumpRotation;
-                dragonManager.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up * 100f, ForceMode.Impulse);
                 dragonAnimatorManager.PlayTargetAnimation(dragonInputHandler.moveAmount > 0 ? "Running Jump" : "Standing Jump", false);
+
+                AddJumpingForce(dragonInputHandler.moveAmount);
             }
+        }
+
+        private void AddJumpingForce(float moveAmount)
+        {
+            if ( moveAmount > 0 )
+            {
+                rigidbody.AddForce(Vector3.forward* moveAmount, ForceMode.Impulse);
+            }
+            rigidbody.AddForce(Vector3.up * 100f, ForceMode.Impulse);
         }
 
     }

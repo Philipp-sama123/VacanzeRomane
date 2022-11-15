@@ -27,6 +27,7 @@ namespace _Scripts._Dragon {
 
         float lookAmountVertical;
         float lookAmountHorizontal;
+        
         float maximumPivotAngle = 15;
         float minimumPivotAngle = -15;
 

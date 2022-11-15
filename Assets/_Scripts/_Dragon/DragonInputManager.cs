@@ -25,6 +25,7 @@ namespace _Scripts._Dragon {
                 playerControls.PlayerMovement.Movement.performed += i => movementInput = i.ReadValue<Vector2>();
                 playerControls.PlayerMovement.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
                 playerControls.PlayerActions.Jump.performed += i => jumpInput = true;
+                // playerControls.PlayerActions.Jump.canceled += i => jumpInput = false;
                 playerControls.PlayerActions.Roll.performed += i => sprintFlag = true;
                 playerControls.PlayerActions.Roll.canceled += i => sprintFlag = false;
             }

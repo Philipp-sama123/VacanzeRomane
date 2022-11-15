@@ -3384,7 +3384,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 45
+  field of view: 40
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -9366,7 +9366,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8304046613983776454}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: e86341a937e5c1e40b9747d09e1f0b62, type: 2}
   m_CullingMode: 0
@@ -9418,7 +9418,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 01a42a6d9fa01254ba8e55ab6be43599, type: 2}
+  - {fileID: 2100000, guid: d06fe8af04bfa0d40b546579440216cc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10861,6 +10861,7 @@ GameObject:
   - component: {fileID: 8299604231476204072}
   - component: {fileID: 8245090102879961194}
   - component: {fileID: 8303427586449474325}
+  - component: {fileID: 8303427586449474326}
   - component: {fileID: 8303427586449474324}
   - component: {fileID: 8303427586449474323}
   - component: {fileID: 8303427586449474322}
@@ -10896,10 +10897,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4ac11dc8b84f244f9cb930e0305535c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myTransform: {fileID: 0}
-  rigidbody: {fileID: 0}
-  groundDetectionRayStartPoint: 1
-  minimumDistanceNeededToBeginFall: 2
+  myTransform: {fileID: 8299604231476204072}
+  rigidbody: {fileID: 8303427586449474325}
+  groundDetectionRayStartPoint: 0.15
+  minimumDistanceNeededToBeginFall: 0.65
   groundDirectionRayDistance: 0.25
   inAirTimer: 0
   ignoreForGroundCheck:
@@ -10958,8 +10959,22 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!136 &8303427586449474326
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8303427586449474320}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.2
+  m_Height: 0.6
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.3, z: 0.11}
 --- !u!1 &8303431262603340722
 GameObject:
   m_ObjectHideFlags: 0
@@ -11134,7 +11149,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bb2246f7eaf119a4f98ce1f856cbcde7, type: 2}
+  - {fileID: 2100000, guid: 5452a0b5767c5bf42aa6924f7683abdc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
