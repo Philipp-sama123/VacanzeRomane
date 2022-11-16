@@ -25,9 +25,10 @@ namespace _Scripts._Dragon {
         [SerializeField] private float movementSpeed = 5f;
         [SerializeField] private float sprintSpeed = 7f;
         [SerializeField] private float walkingSpeed = 1f;
-        [SerializeField] float rotationSpeed = 10f;
-        [SerializeField] float fallingSpeed = 25f;
-        [SerializeField] float leapingVelocity = 2.5f;
+        [SerializeField] private float rotationSpeed = 10f;
+        [SerializeField] private float fallingSpeed = 25f;
+        [SerializeField] private float leapingVelocity = 2.5f;
+        [SerializeField] private float jumpingForce = 10f;
 
         // ToDo: maybe local for Falling
         private Vector3 normalVector;
@@ -82,6 +83,7 @@ namespace _Scripts._Dragon {
 
         public void HandleMovement()
         {
+
             moveDirection = cameraObject.forward * dragonInputHandler.verticalMovementInput;
             moveDirection += cameraObject.right * dragonInputHandler.horizontalMovementInput;
             moveDirection.Normalize();
@@ -110,7 +112,9 @@ namespace _Scripts._Dragon {
             }
             Vector3 projectedVelocity = Vector3.ProjectOnPlane(moveDirection, normalVector);
             rigidbody.velocity = projectedVelocity;
-            dragonAnimatorManager.HandleAnimatorValues(0, dragonInputHandler.moveAmount, dragonManager.isSprinting);
+
+            if ( !dragonManager.isUsingRootMotion )
+                dragonAnimatorManager.HandleAnimatorValues(0, dragonInputHandler.moveAmount, dragonManager.isSprinting);
 
             HandleFalling(Time.deltaTime, moveDirection);
         }
@@ -118,7 +122,15 @@ namespace _Scripts._Dragon {
 
         private void HandleFalling(float deltaTime, Vector3 moveDirection)
         {
+            if ( dragonManager.isFlying )
+            {
+                rigidbody.useGravity = false;
+                return;
+            }
+
             dragonManager.isGrounded = false;
+            rigidbody.useGravity = true;
+
             RaycastHit hit;
             Vector3 origin = myTransform.position;
             origin.y += groundDetectionRayStartPoint;
@@ -178,7 +190,8 @@ namespace _Scripts._Dragon {
                     if ( dragonManager.isUsingRootMotion == false )
                     {
                         Debug.LogWarning("Falling");
-                        dragonAnimatorManager.PlayTargetAnimation("[Airborne] Falling", true);
+                        if ( dragonAnimatorManager.animator.GetBool("IsJumping") == false )
+                            dragonAnimatorManager.PlayTargetAnimation("[Airborne] Falling", true);
                     }
 
                     Vector3 vel = rigidbody.velocity;
@@ -213,27 +226,40 @@ namespace _Scripts._Dragon {
         {
             if ( dragonInputHandler.jumpInput )
             {
-                // dragonAnimatorManager.animator.SetBool("IsInAir", true);
                 dragonInputHandler.jumpInput = false;
 
-                // Todo: maye add some force or movement
-                // moveDirection = cameraObject.forward * dragonInputHandler.verticalMovementInput;
-                // moveDirection += cameraObject.right * dragonInputHandler.horizontalMovementInput;
-                // Quaternion jumpRotation = Quaternion.LookRotation(moveDirection);
-                // myTransform.rotation = jumpRotation;
-                dragonAnimatorManager.PlayTargetAnimation(dragonInputHandler.moveAmount > 0 ? "Running Jump" : "Standing Jump", false);
+                if ( dragonManager.isFlying == false )
+                {
+                    // dragonAnimatorManager.animator.SetBool("IsInAir", true);
 
-                AddJumpingForce(dragonInputHandler.moveAmount);
+                    // Todo: maye add some force or movement
+                    // moveDirection = cameraObject.forward * dragonInputHandler.verticalMovementInput;
+                    // moveDirection += cameraObject.right * dragonInputHandler.horizontalMovementInput;
+                    // Quaternion jumpRotation = Quaternion.LookRotation(moveDirection);
+                    // myTransform.rotation = jumpRotation;
+                    dragonAnimatorManager.PlayTargetAnimation(dragonInputHandler.moveAmount > 0 ? "Running Jump" : "Standing Jump", false);
+                    dragonAnimatorManager.animator.SetBool("IsJumping", true);
+                    AddJumpingForce(dragonInputHandler.moveAmount);
+                }
+                else
+                {
+
+                    AddJumpingForce(dragonInputHandler.moveAmount);
+                }
             }
+
         }
 
         private void AddJumpingForce(float moveAmount)
         {
+            float forceMultiplier = 10f;
+
             if ( moveAmount > 0 )
             {
-                rigidbody.AddForce(Vector3.forward* moveAmount, ForceMode.Impulse);
+                rigidbody.AddForce(Vector3.forward * moveAmount, ForceMode.Impulse);
             }
-            rigidbody.AddForce(Vector3.up * 100f, ForceMode.Impulse);
+
+            rigidbody.AddForce(Vector3.up * forceMultiplier * jumpingForce, ForceMode.Impulse);
         }
 
     }

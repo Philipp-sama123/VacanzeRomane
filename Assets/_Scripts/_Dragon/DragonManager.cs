@@ -11,6 +11,7 @@ namespace _Scripts._Dragon {
         public bool isInAir;
         public bool isSprinting;
         public bool isUsingRootMotion;
+        public bool isFlying { get; private set; }
 
         private void Awake()
         {
@@ -24,6 +25,7 @@ namespace _Scripts._Dragon {
         {
             dragonInputManager.HandleAllInputs();
             isUsingRootMotion = dragonAnimatorManager.animator.GetBool("IsInteracting"); 
+            isFlying = dragonAnimatorManager.animator.GetBool("IsFlying"); 
         }
 
         private void FixedUpdate()
