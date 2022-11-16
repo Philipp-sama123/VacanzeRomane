@@ -4,9 +4,6 @@ namespace _Scripts._Dragon
 {
     public class ResetAnimatorBoolDragon : StateMachineBehaviour
     {
-        public string isInteractingBool = "IsInteracting";
-        public bool isInteractingStatus = false;
-
         public string isJumpingBool = "IsJumping";
         public bool isJumpingStatus = false;
 
@@ -22,7 +19,6 @@ namespace _Scripts._Dragon
 
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            animator.SetBool(isInteractingBool, isInteractingStatus);
             animator.SetBool(isFiringSpellBool, isFiringSpellStatus);
             animator.SetBool(isJumpingBool, isJumpingStatus);
             animator.SetBool(useRootMotionBool, useRootMotionStatus);

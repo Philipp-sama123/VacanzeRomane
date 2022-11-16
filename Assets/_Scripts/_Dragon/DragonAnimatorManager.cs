@@ -32,7 +32,7 @@ namespace _Scripts._Dragon {
         {
             animator.applyRootMotion = isUsingRootMotion;
             animator.SetBool("CanRotate", canRotate); // maybe remove 
-            animator.SetBool("IsInteracting", isUsingRootMotion);
+            animator.SetBool("IsUsingRootMotion", isUsingRootMotion);
             animator.CrossFade(targetAnimation, 0.2f);
         }
 

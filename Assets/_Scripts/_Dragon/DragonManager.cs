@@ -24,7 +24,7 @@ namespace _Scripts._Dragon {
         private void Update()
         {
             dragonInputManager.HandleAllInputs();
-            isUsingRootMotion = dragonAnimatorManager.animator.GetBool("IsInteracting"); 
+            isUsingRootMotion = dragonAnimatorManager.animator.GetBool("IsUsingRootMotion"); 
             isFlying = dragonAnimatorManager.animator.GetBool("IsFlying"); 
         }
 
