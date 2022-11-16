@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace _Scripts._Dragon {
     public class DragonManager : MonoBehaviour {
+
         private DragonCamera dragonCamera;
         private DragonInputManager dragonInputManager;
         private DragonLocomotion dragonLocomotionManager;
@@ -10,8 +11,9 @@ namespace _Scripts._Dragon {
         public bool isGrounded;
         public bool isInAir;
         public bool isSprinting;
+        public bool isJumping;
         public bool isUsingRootMotion;
-        public bool isFlying { get; private set; }
+        public bool isFlying;
 
         private void Awake()
         {
@@ -24,16 +26,21 @@ namespace _Scripts._Dragon {
         private void Update()
         {
             dragonInputManager.HandleAllInputs();
-            isUsingRootMotion = dragonAnimatorManager.animator.GetBool("IsUsingRootMotion"); 
-            isFlying = dragonAnimatorManager.animator.GetBool("IsFlying"); 
+            UpdateStateBoolValuesFromAnimator();
         }
 
         private void FixedUpdate()
         {
             var deltaTime = Time.deltaTime;
-            dragonLocomotionManager.HandleMovement();
-            dragonLocomotionManager.HandleRotation(deltaTime);
-            dragonLocomotionManager.HandleJumping();
+
+            if ( isFlying )
+            {
+                dragonLocomotionManager.HandleFlyingMovement(deltaTime);
+            }
+            else
+            {
+                dragonLocomotionManager.HandleGroundMovement(deltaTime);
+            }
         }
 
         private void LateUpdate()
@@ -41,5 +48,14 @@ namespace _Scripts._Dragon {
             dragonCamera.FollowTarget();
             dragonCamera.RotateCamera(dragonInputManager.horizontalCameraInput, dragonInputManager.verticalCameraInput);
         }
+
+        private void UpdateStateBoolValuesFromAnimator()
+        {
+            isFlying = dragonAnimatorManager.animator.GetBool("IsFlying");
+            isJumping = dragonAnimatorManager.animator.GetBool("IsJumping");
+            isUsingRootMotion = dragonAnimatorManager.animator.GetBool("IsUsingRootMotion");
+        }
+
     }
+
 }

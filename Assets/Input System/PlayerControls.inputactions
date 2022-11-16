@@ -289,6 +289,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "JumpHold",
+                    "type": "Button",
+                    "id": "d89c0dd6-73f6-4682-a3e8-2a7d4556701c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold(duration=0.5,pressPoint=1)",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "A",
                     "type": "Button",
                     "id": "b2fdaca0-8773-44fe-ac56-f90c2df74d76",
@@ -565,6 +574,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "LB",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "05fed25a-e597-45a8-b55e-5fb13c9d683a",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "JumpHold",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1e33900d-b8e8-4867-8246-28c9d2d18177",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "JumpHold",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

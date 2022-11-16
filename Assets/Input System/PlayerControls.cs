@@ -311,6 +311,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""JumpHold"",
+                    ""type"": ""Button"",
+                    ""id"": ""d89c0dd6-73f6-4682-a3e8-2a7d4556701c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold(duration=0.5,pressPoint=1)"",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""A"",
                     ""type"": ""Button"",
                     ""id"": ""b2fdaca0-8773-44fe-ac56-f90c2df74d76"",
@@ -589,6 +598,28 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""LB"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""05fed25a-e597-45a8-b55e-5fb13c9d683a"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""JumpHold"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1e33900d-b8e8-4867-8246-28c9d2d18177"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""JumpHold"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -742,6 +773,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_PlayerActions_CriticalAttack = m_PlayerActions.FindAction("Critical Attack", throwIfNotFound: true);
         m_PlayerActions_RT = m_PlayerActions.FindAction("RT", throwIfNotFound: true);
         m_PlayerActions_Jump = m_PlayerActions.FindAction("Jump", throwIfNotFound: true);
+        m_PlayerActions_JumpHold = m_PlayerActions.FindAction("JumpHold", throwIfNotFound: true);
         m_PlayerActions_A = m_PlayerActions.FindAction("A", throwIfNotFound: true);
         m_PlayerActions_LockOn = m_PlayerActions.FindAction("LockOn", throwIfNotFound: true);
         m_PlayerActions_TwoHanded = m_PlayerActions.FindAction("Two Handed", throwIfNotFound: true);
@@ -875,6 +907,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActions_CriticalAttack;
     private readonly InputAction m_PlayerActions_RT;
     private readonly InputAction m_PlayerActions_Jump;
+    private readonly InputAction m_PlayerActions_JumpHold;
     private readonly InputAction m_PlayerActions_A;
     private readonly InputAction m_PlayerActions_LockOn;
     private readonly InputAction m_PlayerActions_TwoHanded;
@@ -890,6 +923,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @CriticalAttack => m_Wrapper.m_PlayerActions_CriticalAttack;
         public InputAction @RT => m_Wrapper.m_PlayerActions_RT;
         public InputAction @Jump => m_Wrapper.m_PlayerActions_Jump;
+        public InputAction @JumpHold => m_Wrapper.m_PlayerActions_JumpHold;
         public InputAction @A => m_Wrapper.m_PlayerActions_A;
         public InputAction @LockOn => m_Wrapper.m_PlayerActions_LockOn;
         public InputAction @TwoHanded => m_Wrapper.m_PlayerActions_TwoHanded;
@@ -924,6 +958,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Jump.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnJump;
+                @JumpHold.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnJumpHold;
+                @JumpHold.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnJumpHold;
+                @JumpHold.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnJumpHold;
                 @A.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnA;
                 @A.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnA;
                 @A.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnA;
@@ -961,6 +998,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
+                @JumpHold.started += instance.OnJumpHold;
+                @JumpHold.performed += instance.OnJumpHold;
+                @JumpHold.canceled += instance.OnJumpHold;
                 @A.started += instance.OnA;
                 @A.performed += instance.OnA;
                 @A.canceled += instance.OnA;
@@ -1050,6 +1090,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnCriticalAttack(InputAction.CallbackContext context);
         void OnRT(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnJumpHold(InputAction.CallbackContext context);
         void OnA(InputAction.CallbackContext context);
         void OnLockOn(InputAction.CallbackContext context);
         void OnTwoHanded(InputAction.CallbackContext context);
