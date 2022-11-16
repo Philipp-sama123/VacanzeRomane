@@ -28,6 +28,7 @@ namespace _Scripts._Dragon {
         [SerializeField] private float fallingSpeed = 25f;
         [SerializeField] private float leapingVelocity = 2.5f;
         [SerializeField] private float jumpingForce = 10f;
+        [SerializeField] private float upDownForce = 2f;
 
         private float inAirTimer;
         // ToDo: maybe local for Falling
@@ -78,7 +79,24 @@ namespace _Scripts._Dragon {
             HandleMovement();
             HandleRotation(deltaTime);
             HandleJumpHold();
+            HandleAirControl();
+        }
 
+        private void HandleAirControl()
+        {
+            Vector3 airForce = cameraObject.forward * dragonInputHandler.verticalMovementInput;
+            airForce += cameraObject.right * dragonInputHandler.horizontalMovementInput;
+            // go up
+            airForce += cameraObject.up * dragonInputHandler.upDownInput * upDownForce;
+
+            Vector3 projectedVelocity = Vector3.Project(airForce, normalVector);
+            rigidbody.velocity += projectedVelocity;
+            // rigidbody.AddForce(airForce * upDownForce * Time.deltaTime,ForceMode.Acceleration);
+            // Vector3 projectedVelocity = Vector3.ProjectOnPlane(moveDirection, normalVector);
+            // rigidbody.velocity = projectedVelocity;
+
+            if ( !dragonManager.isUsingRootMotion )
+                dragonAnimatorManager.HandleUpAndDown(dragonInputHandler.upDownInput);
         }
 
         private void HandleRotation(float deltaTime)
@@ -201,7 +219,6 @@ namespace _Scripts._Dragon {
                         Debug.LogWarning("Falling");
                         if ( dragonManager.isJumping == false )
                             dragonAnimatorManager.PlayTargetAnimation("[Airborne] Falling", true);
-
                     }
 
                     Vector3 vel = rigidbody.velocity;
@@ -266,14 +283,23 @@ namespace _Scripts._Dragon {
 
         public void AddJumpingForce()
         {
+            StartCoroutine(JumpAcceleration());
+        }
+
+        private IEnumerator JumpAcceleration()
+        {
             float forceMultiplier = 10f;
-
-            if ( dragonInputHandler.moveAmount > 0 )
+            var accelerationDuration = .25f;
+            for ( int i = 0; i < 10000; i++ )
             {
-                rigidbody.AddForce(Vector3.forward * dragonInputHandler.moveAmount, ForceMode.Impulse);
-            }
+                while ( accelerationDuration >= 0 )
+                {
+                    rigidbody.AddForce(Vector3.up * forceMultiplier * jumpingForce, ForceMode.Acceleration);
 
-            rigidbody.AddForce(Vector3.up * forceMultiplier * jumpingForce, ForceMode.Impulse);
+                    accelerationDuration -= Time.smoothDeltaTime;
+                    yield return null;
+                }
+            }
         }
 
         #endregion

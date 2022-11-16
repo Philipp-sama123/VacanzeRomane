@@ -36,6 +36,11 @@ namespace _Scripts._Dragon {
             animator.CrossFade(targetAnimation, 0.2f);
         }
 
+        public void HandleUpAndDown(float upDownInput)
+        {
+            animator.SetFloat("UpDown", SnapValue(upDownInput), 0.1f, Time.deltaTime);
+        }
+
         private void OnAnimatorMove()
         {
             if ( playerManager.isUsingRootMotion == false )
@@ -50,7 +55,6 @@ namespace _Scripts._Dragon {
             Vector3 velocity = deltaPosition / delta;
             playerLocomotion.rigidbody.velocity = velocity;
         }
-
         private static float SnapValue(float valueToSnap)
         {
             float snappedValue = 0;
@@ -87,5 +91,6 @@ namespace _Scripts._Dragon {
             }
             return snappedValue;
         }
+
     }
 }

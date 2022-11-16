@@ -7,10 +7,13 @@ namespace _Scripts._Dragon {
         public float verticalMovementInput { get; private set; }
         public float horizontalCameraInput { get; private set; }
         public float verticalCameraInput { get; private set; }
+        public float upDownInput { get; private set; }
         public float moveAmount { get; private set; }
 
         private Vector2 movementInput;
         private Vector2 cameraInput;
+        private Vector2 airControlInput;
+
 
         [Header("Camera Rotation")]
         public bool sprintFlag;
@@ -25,6 +28,7 @@ namespace _Scripts._Dragon {
 
                 playerControls.PlayerMovement.Movement.performed += i => movementInput = i.ReadValue<Vector2>();
                 playerControls.PlayerMovement.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
+                playerControls.PlayerActions.AirControl.performed += i => airControlInput = i.ReadValue<Vector2>();
                 playerControls.PlayerActions.Jump.performed += i => jumpInput = true;
                 playerControls.PlayerActions.JumpHold.performed += i => jumpHoldInput = true;
                 // playerControls.PlayerActions.Jump.canceled += i => jumpInput = false;
@@ -43,6 +47,7 @@ namespace _Scripts._Dragon {
         {
             HandleMovementInput();
             HandleCameraInput();
+            HandleAirControlInput();
         }
 
         private void HandleMovementInput()
@@ -57,5 +62,11 @@ namespace _Scripts._Dragon {
             horizontalCameraInput = cameraInput.x;
             verticalCameraInput = cameraInput.y;
         }
+
+        private void HandleAirControlInput()
+        {
+            upDownInput = airControlInput.y;
+        }
+
     }
 }
