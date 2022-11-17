@@ -2366,7 +2366,7 @@ MonoBehaviour:
   myTransform: {fileID: 1288159407}
   targetTransform: {fileID: 8299604231476204072}
   lookSpeed: 1
-  followSpeed: 0.25
+  followSpeed: 0.05
   pivotSpeed: 0.5
   minimumPivot: -45
   maximumPivot: 45
@@ -3097,6 +3097,7 @@ MonoBehaviour:
   fallingSpeed: 25
   leapingVelocity: 2.5
   jumpingForce: 10
+  upDownForce: 100
   rollStaminaCost: 10
   backStepStaminaCost: 5
   sprintStaminaCost: 0.1
@@ -11001,13 +11002,14 @@ MonoBehaviour:
   ignoreForGroundCheck:
     serializedVersion: 2
     m_Bits: 0
-  movementSpeed: 3
+  movementSpeed: 2
   sprintSpeed: 7
-  walkingSpeed: 5
+  walkingSpeed: 4
   rotationSpeed: 5
   fallingSpeed: 25
   leapingVelocity: 2.5
   jumpingForce: 5
+  upDownForce: 2
   rollStaminaCost: 10
   backStepStaminaCost: 5
   sprintStaminaCost: 0.1

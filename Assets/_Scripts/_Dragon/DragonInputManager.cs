@@ -67,6 +67,5 @@ namespace _Scripts._Dragon {
         {
             upDownInput = airControlInput.y;
         }
-
     }
 }

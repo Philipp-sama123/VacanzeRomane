@@ -78,8 +78,44 @@ namespace _Scripts._Dragon {
 
             HandleMovement();
             HandleRotation(deltaTime);
+            HandleFlyingGroundCheck();
+
             HandleJumpHold();
             HandleAirControl();
+        }
+
+        private void HandleFlyingGroundCheck()
+        {
+            dragonManager.isGrounded = false;
+
+            RaycastHit hit;
+            Vector3 origin = myTransform.position;
+            origin.y += groundDetectionRayStartPoint;
+
+            Vector3 dir = Vector3.zero;
+            dir.Normalize();
+            origin = origin + dir * groundDirectionRayDistance;
+
+            targetPosition = myTransform.position;
+
+            Debug.DrawRay(origin, -Vector3.up * minimumDistanceNeededToBeginFall, Color.red);
+            if ( Physics.Raycast(origin, -Vector3.up, out hit, minimumDistanceNeededToBeginFall, ignoreForGroundCheck) )
+            {
+                normalVector = hit.normal;
+                Vector3 tp = hit.point;
+                dragonManager.isGrounded = true;
+                targetPosition.y = tp.y;
+                //ToDo: find out if this has a "real" influence
+                // if ( dragonManager.isInAir )
+                // {
+
+                Debug.Log("[Info] Landing You were in the air for " + inAirTimer);
+                dragonAnimatorManager.PlayTargetAnimation("[Airborne] Landing", false);
+                inAirTimer = 0;
+                dragonAnimatorManager.animator.SetBool("IsFlying", false);
+                dragonManager.isInAir = false;
+                // }
+            }
         }
 
         private void HandleAirControl()
@@ -127,7 +163,7 @@ namespace _Scripts._Dragon {
 
             float speed = movementSpeed;
 
-            if ( dragonInputHandler.sprintFlag && dragonInputHandler.moveAmount > 0.5f )
+            if ( dragonInputHandler.sprintFlag && dragonInputHandler.moveAmount > 0.75f )
             {
                 speed = sprintSpeed;
                 dragonManager.isSprinting = true;
@@ -135,7 +171,7 @@ namespace _Scripts._Dragon {
             }
             else
             {
-                if ( dragonInputHandler.moveAmount < 0.5f )
+                if ( dragonInputHandler.moveAmount < 0.75f )
                 {
                     moveDirection *= walkingSpeed;
                     dragonManager.isSprinting = false;
@@ -295,7 +331,12 @@ namespace _Scripts._Dragon {
                 while ( accelerationDuration >= 0 )
                 {
                     rigidbody.AddForce(Vector3.up * forceMultiplier * jumpingForce, ForceMode.Acceleration);
+                    if ( moveDirection == Vector3.zero )
+                    {
+                        // TODO: make this depending on usal ground check 
+                        rigidbody.AddForce(Vector3.up * 40f, ForceMode.Acceleration);
 
+                    }
                     accelerationDuration -= Time.smoothDeltaTime;
                     yield return null;
                 }
@@ -303,6 +344,5 @@ namespace _Scripts._Dragon {
         }
 
         #endregion
-
     }
 }

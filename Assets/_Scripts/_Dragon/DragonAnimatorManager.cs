@@ -55,10 +55,10 @@ namespace _Scripts._Dragon {
             Vector3 velocity = deltaPosition / delta;
             playerLocomotion.rigidbody.velocity = velocity;
         }
+
         private static float SnapValue(float valueToSnap)
         {
             float snappedValue = 0;
-
             switch ( valueToSnap )
             {
                 case > 0 and < 0.30f :

@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using _Scripts._Player;
 using UnityEngine;
 
 namespace _Scripts._Dragon {
@@ -27,9 +24,6 @@ namespace _Scripts._Dragon {
 
         float lookAmountVertical;
         float lookAmountHorizontal;
-        
-        float maximumPivotAngle = 15;
-        float minimumPivotAngle = -15;
 
         public void RotateCamera(float mouseXInput, float mouseYInput)
         {
