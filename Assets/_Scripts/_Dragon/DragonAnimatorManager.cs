@@ -4,14 +4,14 @@ namespace _Scripts._Dragon {
     [RequireComponent(typeof( Animator ))]
     public class DragonAnimatorManager : MonoBehaviour {
         public Animator animator { get; private set; }
-        private DragonManager playerManager;
-        private DragonLocomotion playerLocomotion;
+        private DragonManager dragonManager;
+        private DragonLocomotion dragonLocomotion;
 
         private void Awake()
         {
             animator = GetComponent<Animator>();
-            playerManager = GetComponent<DragonManager>();
-            playerLocomotion = GetComponent<DragonLocomotion>();
+            dragonManager = GetComponent<DragonManager>();
+            dragonLocomotion = GetComponent<DragonLocomotion>();
         }
 
         public void HandleAnimatorValues(float horizontalMovement, float verticalMovement, bool isSprinting)
@@ -43,17 +43,17 @@ namespace _Scripts._Dragon {
 
         private void OnAnimatorMove()
         {
-            if ( playerManager.isUsingRootMotion == false )
+            if ( dragonManager.isUsingRootMotion == false )
                 return;
 
             Debug.Log("[Dragon] using Root Motion!");
 
             float delta = Time.deltaTime;
-            playerLocomotion.rigidbody.drag = 0;
+            dragonLocomotion.rigidbody.drag = 0;
             Vector3 deltaPosition = animator.deltaPosition;
             deltaPosition.y = 0;
             Vector3 velocity = deltaPosition / delta;
-            playerLocomotion.rigidbody.velocity = velocity;
+            dragonLocomotion.rigidbody.velocity = velocity;
         }
 
         private static float SnapValue(float valueToSnap)

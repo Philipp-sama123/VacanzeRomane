@@ -10996,12 +10996,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTransform: {fileID: 8299604231476204072}
   rigidbody: {fileID: 8303427586449474325}
-  groundDetectionRayStartPoint: 0.15
+  groundDetectionRayStartPoint: 0.4
   minimumDistanceNeededToBeginFall: 0.65
   groundDirectionRayDistance: 0.2
   ignoreForGroundCheck:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 257
   movementSpeed: 2
   sprintSpeed: 7
   walkingSpeed: 4
