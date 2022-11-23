@@ -65,7 +65,7 @@ namespace _Scripts._Player {
 
             // those are playing a Root Motion Animation so it NEEDS to be in Update to not be out of sync
             playerLocomotion.HandleRollingAndSprinting();
-            playerLocomotion.HandleJumping(); // playerLocomotion.HandleJumping();
+            playerLocomotion.HandleJumpingAlternative(); // playerLocomotion.HandleJumping();
 
             #endregion
 

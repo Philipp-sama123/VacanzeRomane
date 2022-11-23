@@ -126,9 +126,9 @@ namespace _Scripts._Dragon {
 
             Vector3 projectedVelocity = Vector3.Project(airForce, normalVector);
             if ( dragonInputManager.sprintFlag )
-                projectedVelocity *= 2; 
+                projectedVelocity *= 2;
             rigidbody.velocity += projectedVelocity;
-            
+
             if ( !dragonManager.isUsingRootMotion )
                 dragonAnimatorManager.HandleUpAndDown(dragonInputManager.upDownInput);
         }
@@ -207,7 +207,7 @@ namespace _Scripts._Dragon {
                 rigidbody.AddForce(transform.forward * leapingVelocity, ForceMode.Impulse);
                 rigidbody.AddForce(Vector3.down * fallingSpeed * 9.8f * inAirTimer * deltaTime, ForceMode.Acceleration);
             }
-            
+
             Vector3 dir = movementDirection;
             dir.Normalize();
             origin = origin + dir * groundDirectionRayDistance;
@@ -325,21 +325,14 @@ namespace _Scripts._Dragon {
         {
             float forceMultiplier = 10f;
             var accelerationDuration = .25f;
-            for ( int i = 0; i < 10000; i++ )
+            Vector3 force = Vector3.up * forceMultiplier * jumpingForce;
+            while ( accelerationDuration >= 0 )
             {
-                while ( accelerationDuration >= 0 )
-                {
-                    rigidbody.AddForce(Vector3.up * forceMultiplier * jumpingForce, ForceMode.Acceleration);
-                    if ( moveDirection == Vector3.zero )
-                    {
-                        // TODO: make this depending on usal ground check 
-                        rigidbody.AddForce(Vector3.up * 40f, ForceMode.Acceleration);
-
-                    }
-                    accelerationDuration -= Time.smoothDeltaTime;
-                    yield return null;
-                }
+                rigidbody.AddForce(force, ForceMode.Acceleration);
+                accelerationDuration -= Time.smoothDeltaTime;
+                yield return null;
             }
+
         }
 
         #endregion

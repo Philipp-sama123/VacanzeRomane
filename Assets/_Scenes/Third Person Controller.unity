@@ -5297,6 +5297,14 @@ PrefabInstance:
       propertyPath: itemInteractableGameObject
       value: 
       objectReference: {fileID: 567385919}
+    - target: {fileID: 4370229561100826669, guid: 371462c05ec7243d5b4c771fcfb124ae, type: 3}
+      propertyPath: rayCastHeightOffSet
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4370229561100826669, guid: 371462c05ec7243d5b4c771fcfb124ae, type: 3}
+      propertyPath: minimumDistanceNeededToBeginFall
+      value: 0.75
+      objectReference: {fileID: 0}
     - target: {fileID: 4370229561100826670, guid: 371462c05ec7243d5b4c771fcfb124ae, type: 3}
       propertyPath: m_Name
       value: '[Player] 3rdPersonController'

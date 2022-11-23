@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace _Scripts._Player {
@@ -34,6 +35,8 @@ namespace _Scripts._Player {
         [SerializeField] float rotationSpeed = 10f;
         [SerializeField] float fallingSpeed = 45f;
         [SerializeField] float leapingVelocity = 2.5f;
+        [SerializeField] private float jumpForce = 75f;
+        [SerializeField] private float jumpAccelerationDuration = 0.2f;
 
         [Header("Stamina Costs")]
         public float rollStaminaCost = 10;
@@ -138,6 +141,7 @@ namespace _Scripts._Player {
         {
             if ( inputHandler.rollFlag ) return;
             if ( playerManager.isInteracting ) return;
+            if ( playerManager.isInAir ) return;
 
             moveDirection = cameraObject.forward * inputHandler.vertical;
             moveDirection += cameraObject.right * inputHandler.horizontal;
@@ -280,7 +284,7 @@ namespace _Scripts._Player {
                 {
                     if ( playerManager.isInteracting == false )
                     {
-                        playerAnimatorManager.PlayTargetAnimation("[Airborne] Falling", true);
+                        playerAnimatorManager.PlayTargetAnimation("[Airborne] Falling", true, true);
                     }
 
                     Vector3 vel = rigidbody.velocity;
@@ -306,34 +310,6 @@ namespace _Scripts._Player {
 
         }
 
-        public void HandleJumping()
-        {
-            if ( playerManager.isInteracting ) return;
-            if ( playerStats.currentStamina <= 0 ) return;
-
-            if ( inputHandler.jumpInput )
-            {
-                // just when player is moving
-                if ( inputHandler.moveAmount > 0 )
-                {
-                    moveDirection = cameraObject.forward * inputHandler.vertical;
-                    moveDirection += cameraObject.right * inputHandler.horizontal;
-                    playerAnimatorManager.PlayTargetAnimation("[Airborne] Running Jump", true);
-                    //Todo: think of this playerAnimatorManager.PlayTargetAnimation("[Airborne] Standing Jump", false, true);
-                    moveDirection.y = 0; // so just rootMotion handles the shit
-                    // maybe addforce
-
-                    Quaternion jumpRotation = Quaternion.LookRotation(moveDirection);
-                    myTransform.rotation = jumpRotation;
-                }
-                else
-                {
-                    // Todo: maye add some force
-                    playerAnimatorManager.PlayTargetAnimation("[Airborne] Standing Jump", false, true);
-                }
-            }
-        }
-
         public void HandleJumpingAlternative()
         {
             if ( playerManager.isInteracting ) return;
@@ -342,17 +318,21 @@ namespace _Scripts._Player {
             if ( inputHandler.jumpInput )
             {
                 playerAnimatorManager.PlayTargetAnimation("Standing Jump", false, true);
-                Vector3 forceUp = Vector3.up * 100;
-                rigidbody.AddForce(forceUp, ForceMode.Impulse);
-                if ( inputHandler.moveAmount > 0 )
-                {
-                    moveDirection = cameraObject.forward * inputHandler.vertical;
-                    moveDirection += cameraObject.right * inputHandler.horizontal;
-                    Quaternion jumpRotation = Quaternion.LookRotation(moveDirection);
-                    myTransform.rotation = jumpRotation;
-                }
-                // Todo: maye add some force
+                StartCoroutine(JumpAcceleration());
             }
+        }
+
+        private IEnumerator JumpAcceleration()
+        {
+            float jumpDuration = jumpAccelerationDuration;
+
+            while ( jumpDuration >= 0 )
+            {
+                rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Acceleration);
+                jumpDuration -= Time.smoothDeltaTime;
+                yield return null;
+            }
+
         }
 
         #endregion
