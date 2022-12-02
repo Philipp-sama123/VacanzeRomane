@@ -133,12 +133,14 @@ namespace _Scripts._Player {
 
         public void EnableCanBeRiposted()
         {
-            playerManager.canBeRiposted = true; 
+            playerManager.canBeRiposted = true;
         }
+
         public void DisableCanBeRiposted()
         {
-            playerManager.canBeRiposted = false; 
+            playerManager.canBeRiposted = false;
         }
+
         #endregion
 
         public override void TakeCriticalDamageAnimationEvent()
@@ -155,6 +157,7 @@ namespace _Scripts._Player {
                 return;
 
             float delta = Time.deltaTime;
+            Debug.LogWarning("Use Root Motion" + animator.deltaPosition);
             playerLocomotion.rigidbody.drag = 0;
             Vector3 deltaPosition = animator.deltaPosition;
             deltaPosition.y = 0;

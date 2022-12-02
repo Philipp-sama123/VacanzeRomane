@@ -46,7 +46,7 @@ namespace _Scripts._Dragon {
             if ( dragonManager.isUsingRootMotion == false )
                 return;
 
-            Debug.Log("[Dragon] using Root Motion!");
+            Debug.Log("[Dragon] using Root Motion! " + animator.deltaPosition);
 
             float delta = Time.deltaTime;
             dragonLocomotion.rigidbody.drag = 0;

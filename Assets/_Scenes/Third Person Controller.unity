@@ -5298,8 +5298,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 567385919}
     - target: {fileID: 4370229561100826669, guid: 371462c05ec7243d5b4c771fcfb124ae, type: 3}
+      propertyPath: jumpForce
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4370229561100826669, guid: 371462c05ec7243d5b4c771fcfb124ae, type: 3}
       propertyPath: rayCastHeightOffSet
       value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4370229561100826669, guid: 371462c05ec7243d5b4c771fcfb124ae, type: 3}
+      propertyPath: jumpAccelerationDuration
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4370229561100826669, guid: 371462c05ec7243d5b4c771fcfb124ae, type: 3}
+      propertyPath: ignoreForGroundCheck.m_Bits
+      value: 257
       objectReference: {fileID: 0}
     - target: {fileID: 4370229561100826669, guid: 371462c05ec7243d5b4c771fcfb124ae, type: 3}
       propertyPath: minimumDistanceNeededToBeginFall

@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace _Scripts._Player {
     public class PlayerLocomotion : MonoBehaviour {
-
         private Transform cameraObject;
         private CameraHandler cameraHandler;
 
@@ -16,17 +15,15 @@ namespace _Scripts._Player {
 
         [HideInInspector]
         public Transform myTransform;
-
         public new Rigidbody rigidbody;
-        public GameObject normalCamera;
 
         [Header("Ground and Air Detection Stats")]
         [SerializeField] private float groundDetectionRayStartPoint = 0.5f;
         [SerializeField] private float minimumDistanceNeededToBeginFall = 1f;
         [SerializeField] private float groundDirectionRayDistance = 0.25f;
-        public float rayCastHeightOffSet = 0.5f;
+
         public float inAirTimer;
-        public LayerMask ignoreForGroundCheck;
+        [SerializeField] private LayerMask ignoreForGroundCheck;
 
         [Header("Movement Stats")]
         [SerializeField] private float movementSpeed = 5f;
@@ -35,16 +32,16 @@ namespace _Scripts._Player {
         [SerializeField] float rotationSpeed = 10f;
         [SerializeField] float fallingSpeed = 45f;
         [SerializeField] float leapingVelocity = 2.5f;
-        [SerializeField] private float jumpForce = 75f;
+        [SerializeField] private float jumpForce = 2f;
         [SerializeField] private float jumpAccelerationDuration = 0.2f;
 
         [Header("Stamina Costs")]
-        public float rollStaminaCost = 10;
-        public float backStepStaminaCost = 5;
-        public float sprintStaminaCost = .1f;
+        [SerializeField] private float rollStaminaCost = 10;
+        [SerializeField] private float backStepStaminaCost = 5;
+        [SerializeField] private float sprintStaminaCost = .1f;
 
-        public CapsuleCollider characterCollider;
-        public CapsuleCollider characterCollisionBlockerCollider;
+        [SerializeField] private CapsuleCollider characterCollider;
+        [SerializeField] private CapsuleCollider characterCollisionBlockerCollider;
 
         private void Awake()
         {
@@ -67,7 +64,6 @@ namespace _Scripts._Player {
             playerAnimatorManager.Initialize();
 
             playerManager.isGrounded = true;
-            ignoreForGroundCheck = ~(1 << 8 | 1 << 11);
 
             IgnoreCharacterColliderCollision();
         }
@@ -141,7 +137,6 @@ namespace _Scripts._Player {
         {
             if ( inputHandler.rollFlag ) return;
             if ( playerManager.isInteracting ) return;
-            if ( playerManager.isInAir ) return;
 
             moveDirection = cameraObject.forward * inputHandler.vertical;
             moveDirection += cameraObject.right * inputHandler.horizontal;
@@ -317,7 +312,9 @@ namespace _Scripts._Player {
 
             if ( inputHandler.jumpInput )
             {
-                playerAnimatorManager.PlayTargetAnimation("Standing Jump", false, true);
+                playerAnimatorManager.PlayTargetAnimation("[Airborne] Jump Start", false, true);
+                // rigidbody.AddForce(Vector3.up * jumpForce* 10, ForceMode.Impulse);
+
                 StartCoroutine(JumpAcceleration());
             }
         }
@@ -328,7 +325,8 @@ namespace _Scripts._Player {
 
             while ( jumpDuration >= 0 )
             {
-                rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Acceleration);
+                rigidbody.AddForce(Vector3.up * jumpForce , ForceMode.Impulse);
+                rigidbody.AddForce( moveDirection/2 , ForceMode.Impulse);
                 jumpDuration -= Time.smoothDeltaTime;
                 yield return null;
             }

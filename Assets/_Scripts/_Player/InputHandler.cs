@@ -93,14 +93,6 @@ namespace _Scripts._Player {
 
                 inputActions.PlayerActions.LB.performed += i => lbInput = true;
                 inputActions.PlayerActions.LB.canceled += i => lbInput = false;
-                
-                // ToDo: find another input (currently tap on light attack) 
-                inputActions.PlayerActions.CriticalAttack.performed += i => criticalAttackInput = true;
-
-                inputActions.PlayerActions.Inventory.performed += i => inventoryInput = true;
-                inputActions.PlayerActions.Jump.performed += i => jumpInput = true;
-
-                inputActions.PlayerActions.A.performed += i => aInput = true;
 
                 inputActions.PlayerActions.Roll.performed += i => rollAndSprintInput = true;
                 inputActions.PlayerActions.Roll.canceled += i => rollAndSprintInput = false; // when you unpress - changes the bool to false
@@ -116,6 +108,11 @@ namespace _Scripts._Player {
                 inputActions.PlayerQuickslots.DPadUp.performed += i => dPadUp = true;
                 inputActions.PlayerQuickslots.DPadDown.performed += i => dPadDown = true;
 
+                // ToDo: find another input (currently tap on light attack) 
+                inputActions.PlayerActions.CriticalAttack.performed += i => criticalAttackInput = true;
+                inputActions.PlayerActions.Inventory.performed += i => inventoryInput = true;
+                inputActions.PlayerActions.Jump.performed += i => jumpInput = true;
+                inputActions.PlayerActions.A.performed += i => aInput = true;
             }
 
             inputActions.Enable();
