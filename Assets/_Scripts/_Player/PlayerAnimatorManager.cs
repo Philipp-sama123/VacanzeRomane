@@ -157,11 +157,11 @@ namespace _Scripts._Player {
                 return;
 
             float delta = Time.deltaTime;
-            Debug.LogWarning("Use Root Motion" + animator.deltaPosition);
             playerLocomotion.rigidbody.drag = 0;
             Vector3 deltaPosition = animator.deltaPosition;
-            deltaPosition.y = 0;
+        
             Vector3 velocity = deltaPosition / delta;
+            Debug.LogWarning("Use Root Motion" + velocity);
             playerLocomotion.rigidbody.velocity = velocity;
         }
     }

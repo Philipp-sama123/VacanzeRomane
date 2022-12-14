@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.5618946, g: 0.7220881, b: 0.8180075, a: 1}
+  m_IndirectSpecularColor: {r: 0.56184906, g: 0.72206545, b: 0.81800187, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5320,6 +5320,10 @@ PrefabInstance:
     - target: {fileID: 4370229561100826670, guid: 371462c05ec7243d5b4c771fcfb124ae, type: 3}
       propertyPath: m_Name
       value: '[Player] 3rdPersonController'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4719246497134834046, guid: 371462c05ec7243d5b4c771fcfb124ae, type: 3}
+      propertyPath: m_UpdateMode
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 371462c05ec7243d5b4c771fcfb124ae, type: 3}

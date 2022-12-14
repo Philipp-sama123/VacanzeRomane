@@ -294,12 +294,10 @@ namespace _Scripts._Player {
 
             if ( playerManager.isInteracting || inputHandler.moveAmount > 0 )
             {
-                // rigidbody.MovePosition(targetPosition);
                 myTransform.position = Vector3.Lerp(myTransform.position, targetPosition, deltaTime / 0.1f);
             }
             else
             {
-                // rigidbody.MovePosition(targetPosition);
                 myTransform.position = targetPosition;
             }
 
@@ -312,25 +310,9 @@ namespace _Scripts._Player {
 
             if ( inputHandler.jumpInput )
             {
-                playerAnimatorManager.PlayTargetAnimation("[Airborne] Jump Start", false, true);
+                playerAnimatorManager.PlayTargetAnimation("[Airborne] Jump Start", true, true);
                 // rigidbody.AddForce(Vector3.up * jumpForce* 10, ForceMode.Impulse);
-
-                StartCoroutine(JumpAcceleration());
             }
-        }
-
-        private IEnumerator JumpAcceleration()
-        {
-            float jumpDuration = jumpAccelerationDuration;
-
-            while ( jumpDuration >= 0 )
-            {
-                rigidbody.AddForce(Vector3.up * jumpForce , ForceMode.Impulse);
-                rigidbody.AddForce( moveDirection/2 , ForceMode.Impulse);
-                jumpDuration -= Time.smoothDeltaTime;
-                yield return null;
-            }
-
         }
 
         #endregion
