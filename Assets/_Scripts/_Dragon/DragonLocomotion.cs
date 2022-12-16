@@ -1,8 +1,10 @@
 using System.Collections;
 using UnityEngine;
 
-namespace _Scripts._Dragon {
-    public class DragonLocomotion : MonoBehaviour {
+namespace _Scripts._Dragon
+{
+    public class DragonLocomotion : MonoBehaviour
+    {
         private Transform cameraObject;
 
         private DragonAnimatorManager dragonAnimatorManager;
@@ -13,15 +15,17 @@ namespace _Scripts._Dragon {
         public new Rigidbody rigidbody;
         private Vector3 moveDirection;
 
-        [Header("Ground and Air Detection Stats")]
-        [SerializeField] private float groundDetectionRayStartPoint = 1f;
+        [Header("Ground and Air Detection Stats")] [SerializeField]
+        private float groundDetectionRayStartPoint = 1f;
+
         [SerializeField] private float minimumDistanceNeededToBeginFall = 2f;
         [SerializeField] private float groundDirectionRayDistance = 0.25f;
 
         [SerializeField] private LayerMask ignoreForGroundCheck;
 
-        [Header("Movement Stats")]
-        [SerializeField] private float movementSpeed = 5f;
+        [Header("Movement Stats")] [SerializeField]
+        private float movementSpeed = 5f;
+
         [SerializeField] private float sprintSpeed = 7f;
         [SerializeField] private float walkingSpeed = 1f;
         [SerializeField] private float rotationSpeed = 10f;
@@ -31,12 +35,12 @@ namespace _Scripts._Dragon {
         [SerializeField] private float upDownForce = 2f;
 
         private float inAirTimer;
+
         // ToDo: maybe local for Falling
         private Vector3 normalVector;
         private Vector3 targetPosition;
 
-        [Header("Stamina Costs")]
-        public float rollStaminaCost = 10;
+        [Header("Stamina Costs")] public float rollStaminaCost = 10;
         public float backStepStaminaCost = 5;
         public float sprintStaminaCost = .1f;
 
@@ -51,7 +55,7 @@ namespace _Scripts._Dragon {
 
         private void Start()
         {
-            if ( Camera.main != null ) cameraObject = Camera.main.transform;
+            if (Camera.main != null) cameraObject = Camera.main.transform;
             else Debug.LogWarning("No Main Camera in the Scene!");
 
             myTransform = transform;
@@ -63,7 +67,7 @@ namespace _Scripts._Dragon {
         {
             rigidbody.useGravity = true;
 
-            if ( dragonManager.isGrounded )
+            if (dragonManager.isGrounded)
                 HandleMovement();
             HandleRotation(deltaTime);
             HandleFalling(deltaTime, moveDirection);
@@ -99,14 +103,14 @@ namespace _Scripts._Dragon {
             targetPosition = myTransform.position;
 
             Debug.DrawRay(origin, -Vector3.up * minimumDistanceNeededToBeginFall, Color.red);
-            if ( Physics.Raycast(origin, -Vector3.up, out hit, minimumDistanceNeededToBeginFall, ignoreForGroundCheck) )
+            if (Physics.Raycast(origin, -Vector3.up, out hit, minimumDistanceNeededToBeginFall, ignoreForGroundCheck))
             {
                 normalVector = hit.normal;
                 Vector3 tp = hit.point;
                 dragonManager.isGrounded = true;
                 targetPosition.y = tp.y;
 
-                if ( dragonManager.isInAir )
+                if (dragonManager.isInAir)
                 {
                     Debug.Log("[Info] Landing You were in the air for " + inAirTimer);
                     dragonAnimatorManager.PlayTargetAnimation("[Airborne] Landing", false);
@@ -125,11 +129,11 @@ namespace _Scripts._Dragon {
             airForce += cameraObject.up * dragonInputManager.upDownInput * upDownForce;
 
             Vector3 projectedVelocity = Vector3.Project(airForce, normalVector);
-            if ( dragonInputManager.sprintFlag )
+            if (dragonInputManager.sprintFlag)
                 projectedVelocity *= 2;
             rigidbody.velocity += projectedVelocity;
 
-            if ( !dragonManager.isUsingRootMotion )
+            if (!dragonManager.isUsingRootMotion)
                 dragonAnimatorManager.HandleUpAndDown(dragonInputManager.upDownInput);
         }
 
@@ -141,7 +145,7 @@ namespace _Scripts._Dragon {
             targetDir.Normalize();
             targetDir.y = 0;
 
-            if ( targetDir == Vector3.zero )
+            if (targetDir == Vector3.zero)
                 targetDir = myTransform.forward;
 
             float rs = rotationSpeed;
@@ -161,7 +165,7 @@ namespace _Scripts._Dragon {
 
             float speed = movementSpeed;
 
-            if ( dragonInputManager.sprintFlag && dragonInputManager.moveAmount > 0.75f )
+            if (dragonInputManager.sprintFlag && dragonInputManager.moveAmount > 0.75f)
             {
                 speed = sprintSpeed;
                 dragonManager.isSprinting = true;
@@ -169,7 +173,7 @@ namespace _Scripts._Dragon {
             }
             else
             {
-                if ( dragonInputManager.moveAmount < 0.75f )
+                if (dragonInputManager.moveAmount < 0.75f)
                 {
                     moveDirection *= walkingSpeed;
                     dragonManager.isSprinting = false;
@@ -180,10 +184,11 @@ namespace _Scripts._Dragon {
                     dragonManager.isSprinting = false;
                 }
             }
+
             Vector3 projectedVelocity = Vector3.ProjectOnPlane(moveDirection, normalVector);
             rigidbody.velocity = projectedVelocity;
 
-            if ( !dragonManager.isUsingRootMotion )
+            if (!dragonManager.isUsingRootMotion)
                 dragonAnimatorManager.HandleAnimatorValues(0, dragonInputManager.moveAmount, dragonManager.isSprinting);
         }
 
@@ -196,12 +201,12 @@ namespace _Scripts._Dragon {
             Vector3 origin = myTransform.position;
             origin.y += groundDetectionRayStartPoint;
 
-            if ( Physics.Raycast(origin, myTransform.forward, out hit, 0.4f) )
+            if (Physics.Raycast(origin, myTransform.forward, out hit, 0.4f))
             {
                 movementDirection = Vector3.zero;
             }
 
-            if ( dragonManager.isInAir )
+            if (dragonManager.isInAir)
             {
                 inAirTimer++;
                 rigidbody.AddForce(transform.forward * leapingVelocity, ForceMode.Impulse);
@@ -215,16 +220,16 @@ namespace _Scripts._Dragon {
             targetPosition = myTransform.position;
 
             Debug.DrawRay(origin, -Vector3.up * minimumDistanceNeededToBeginFall, Color.red);
-            if ( Physics.Raycast(origin, -Vector3.up, out hit, minimumDistanceNeededToBeginFall, ignoreForGroundCheck) )
+            if (Physics.Raycast(origin, -Vector3.up, out hit, minimumDistanceNeededToBeginFall, ignoreForGroundCheck))
             {
                 normalVector = hit.normal;
                 Vector3 tp = hit.point;
                 dragonManager.isGrounded = true;
                 targetPosition.y = tp.y;
 
-                if ( dragonManager.isInAir )
+                if (dragonManager.isInAir)
                 {
-                    if ( inAirTimer > 0.5f )
+                    if (inAirTimer > 0.5f)
                     {
                         Debug.Log("[Info] Landing You were in the air for " + inAirTimer);
                         dragonAnimatorManager.PlayTargetAnimation("[Airborne] Landing", false);
@@ -242,18 +247,17 @@ namespace _Scripts._Dragon {
             }
             else
             {
-                if ( dragonManager.isGrounded )
+                if (dragonManager.isGrounded)
                 {
                     dragonManager.isGrounded = false;
                 }
 
-                if ( dragonManager.isInAir == false )
+                if (dragonManager.isInAir == false)
                 {
-                    if ( dragonManager.isUsingRootMotion == false )
+                    if (dragonManager.isUsingRootMotion == false)
                     {
                         Debug.LogWarning("Falling");
-                        if ( dragonManager.isJumping == false )
-                            dragonAnimatorManager.PlayTargetAnimation("[Airborne] Falling", true);
+                        dragonAnimatorManager.PlayTargetAnimation("[Airborne] Falling", true);
                     }
 
                     Vector3 vel = rigidbody.velocity;
@@ -263,7 +267,7 @@ namespace _Scripts._Dragon {
                 }
             }
 
-            if ( dragonInputManager.moveAmount > 0 )
+            if (dragonInputManager.moveAmount > 0)
             {
                 Debug.LogWarning("Align Feet");
                 myTransform.position = Vector3.Lerp(myTransform.position, targetPosition, deltaTime / .2f);
@@ -271,70 +275,51 @@ namespace _Scripts._Dragon {
             else
             {
                 Debug.LogWarning("Align Feet no Movement");
-                myTransform.position = targetPosition;
+                myTransform.position = Vector3.Lerp(myTransform.position, targetPosition, deltaTime / .2f);
             }
         }
 
         private void HandleJumping()
         {
-            if ( dragonInputManager.jumpInput )
+            if (dragonInputManager.jumpInput)
             {
                 dragonInputManager.jumpInput = false;
 
-                if ( dragonManager.isFlying == false && dragonManager.isGrounded )
+                if (dragonManager.isFlying == false && dragonManager.isGrounded )
                 {
-                    dragonAnimatorManager.PlayTargetAnimation(dragonInputManager.moveAmount > 0 ? "Running Jump" : "Standing Jump", false);
-                    dragonAnimatorManager.animator.SetBool("IsJumping", true);
+                    
+                    if(dragonInputManager.moveAmount > .5f)
+                    {
+                        dragonAnimatorManager.PlayTargetAnimation("Running Jump", true);
+                    }
+                    else
+                    {
+                        dragonAnimatorManager.PlayTargetAnimation("Standing Jump", true);
+
+                    }
                 }
             }
         }
 
         private void HandleJumpHold()
         {
-            if ( dragonInputManager.jumpHoldInput )
+            if (dragonInputManager.jumpHoldInput)
             {
                 dragonInputManager.jumpHoldInput = false;
 
-                if ( dragonManager.isFlying == false )
+                if (dragonManager.isFlying == false)
                 {
                     dragonAnimatorManager.animator.SetBool("IsFlying", true);
                     dragonAnimatorManager.PlayTargetAnimation("Empty", false);
-
                 }
                 else
                 {
                     dragonAnimatorManager.animator.SetBool("IsFlying", false);
                     dragonAnimatorManager.PlayTargetAnimation("[Airborne] Falling", true);
-
-
                 }
             }
         }
 
-        /**
-        * Animator Events
-        **/
-        #region Animator Events
-
-        public void AddJumpingForce()
-        {
-            StartCoroutine(JumpAcceleration());
-        }
-
-        private IEnumerator JumpAcceleration()
-        {
-            float forceMultiplier = 10f;
-            var accelerationDuration = .25f;
-            Vector3 force = Vector3.up * forceMultiplier * jumpingForce;
-            while ( accelerationDuration >= 0 )
-            {
-                rigidbody.AddForce(force, ForceMode.Acceleration);
-                accelerationDuration -= Time.smoothDeltaTime;
-                yield return null;
-            }
-
-        }
-
-        #endregion
+      
     }
 }

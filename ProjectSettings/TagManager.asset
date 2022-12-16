@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Interactable
   - Bullet
+  - Animal
   layers:
   - Default
   - TransparentFX
@@ -18,8 +19,8 @@ TagManager:
   - 
   - Environment
   - Character
-  - Character Collision Blocker
   - Player
+  - Character Collision Blocker
   - BackStab
   - Riposte
   - Projectile

@@ -303,7 +303,7 @@ namespace _Scripts._Player {
 
         }
 
-        public void HandleJumpingAlternative()
+        public void HandleJumping()
         {
             if ( playerManager.isInteracting ) return;
             if ( playerStats.currentStamina <= 0 ) return;

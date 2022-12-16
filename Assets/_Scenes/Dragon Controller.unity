@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.5618946, g: 0.7220881, b: 0.8180075, a: 1}
+  m_IndirectSpecularColor: {r: 0.56184906, g: 0.72206545, b: 0.81800187, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -199,7 +199,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &112996234
 PrefabInstance:
@@ -541,7 +541,7 @@ Transform:
   - {fileID: 614265996}
   - {fileID: 1070551416}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &289162976
 GameObject:
@@ -736,7 +736,7 @@ Transform:
   - {fileID: 883444203}
   - {fileID: 1723942286}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &371363463
 PrefabInstance:
@@ -1498,7 +1498,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!4 &762679784 stripped
 Transform:
@@ -2344,7 +2344,7 @@ GameObject:
   - component: {fileID: 1288159407}
   - component: {fileID: 1288159406}
   m_Layer: 0
-  m_Name: '[Dragon] TigerDragon CameraHolder'
+  m_Name: CameraHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2377,14 +2377,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1288159405}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.014223954, y: -0, z: -0, w: 0.99989885}
+  m_LocalPosition: {x: 2.57241, y: -0.1942928, z: -6.8277607}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 794790265}
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_Father: {fileID: 8299604231476204072}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1350202704 stripped
 Transform:
@@ -3028,7 +3028,7 @@ Transform:
   m_Children:
   - {fileID: 1247926187}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1815739057
 GameObject:
@@ -3067,7 +3067,6 @@ MonoBehaviour:
   isGrounded: 0
   isInAir: 0
   isSprinting: 0
-  isJumping: 0
   isUsingRootMotion: 0
   isFlying: 0
 --- !u!114 &1815739059
@@ -3130,7 +3129,7 @@ Transform:
   m_Children:
   - {fileID: 4330493135432896}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1860199057
 PrefabInstance:
@@ -3346,7 +3345,7 @@ Transform:
   - {fileID: 1084885776}
   - {fileID: 921138861}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1961974491
 PrefabInstance:
@@ -9394,7 +9393,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4370229561100826664, guid: 371462c05ec7243d5b4c771fcfb124ae, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4370229561100826664, guid: 371462c05ec7243d5b4c771fcfb124ae, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9632,8 +9631,9 @@ Transform:
   - {fileID: 8300056664311175598}
   - {fileID: 8299670308699293982}
   - {fileID: 1435395964}
+  - {fileID: 1288159407}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 1.63, y: 0, z: 0}
 --- !u!4 &8299615138095464938
 Transform:
@@ -11008,7 +11008,7 @@ MonoBehaviour:
   rotationSpeed: 5
   fallingSpeed: 25
   leapingVelocity: 2.5
-  jumpingForce: 5
+  jumpingForce: 15
   upDownForce: 2
   rollStaminaCost: 10
   backStepStaminaCost: 5
@@ -11043,7 +11043,6 @@ MonoBehaviour:
   isGrounded: 0
   isInAir: 0
   isSprinting: 0
-  isJumping: 0
   isUsingRootMotion: 0
   isFlying: 0
 --- !u!54 &8303427586449474325

@@ -51,8 +51,8 @@ namespace _Scripts._Dragon {
             float delta = Time.deltaTime;
             dragonLocomotion.rigidbody.drag = 0;
             Vector3 deltaPosition = animator.deltaPosition;
-            deltaPosition.y = 0;
             Vector3 velocity = deltaPosition / delta;
+            Debug.Log("[Dragon] using Root Motion! " + velocity);
             dragonLocomotion.rigidbody.velocity = velocity;
         }
 

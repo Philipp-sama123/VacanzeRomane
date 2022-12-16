@@ -11,7 +11,6 @@ namespace _Scripts._Dragon {
         public bool isGrounded;
         public bool isInAir;
         public bool isSprinting;
-        public bool isJumping;
         public bool isUsingRootMotion;
         public bool isFlying;
 
@@ -51,8 +50,9 @@ namespace _Scripts._Dragon {
 
         private void UpdateStateBoolValuesFromAnimator()
         {
+            dragonAnimatorManager.animator.SetBool("IsGrounded", isGrounded);
+            dragonAnimatorManager.animator.SetBool("IsInAir", isInAir);
             isFlying = dragonAnimatorManager.animator.GetBool("IsFlying");
-            isJumping = dragonAnimatorManager.animator.GetBool("IsJumping");
             isUsingRootMotion = dragonAnimatorManager.animator.GetBool("IsUsingRootMotion");
         }
 
